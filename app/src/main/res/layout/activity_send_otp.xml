@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SendOtpActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/country_picker"
+            android:layout_width="150dp"
+            app:ccp_defaultNameCode="US"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone number"
+            android:inputType="phone" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_send_otp"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Send OTP"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout"
+        app:layout_constraintStart_toStartOf="@id/linear_layout"
+        app:layout_constraintEnd_toEndOf="@id/linear_layout"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout"
+        app:layout_constraintStart_toStartOf="@id/linear_layout"
+        app:layout_constraintEnd_toEndOf="@id/linear_layout"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
