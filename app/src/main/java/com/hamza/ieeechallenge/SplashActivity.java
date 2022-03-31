@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.hamza.ieeechallenge.activities.MainActivity;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1033167602937-js86qddjludn221a1j4h1b30lbj3l4p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hamza.ieeechallenge",
+            "certificate_hash": "dbc2f7076d46b51a5b0989006e54084af583cb8b"
+          }
+        },
+        {
           "client_id": "1033167602937-5b6buvkaq3p9dche5u54q5u2mklb93p1.apps.googleusercontent.com",
           "client_type": 3
         }

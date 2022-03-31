@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.hamza.ieeechallenge.activities.MainActivity;
 import com.hamza.ieeechallenge.databinding.ActivityVerifyOtpBinding;
 
 public class VerifyOtpActivity extends AppCompatActivity {
