@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1033167602937",
+    "project_id": "ieee-challenge-app-dfe45",
+    "storage_bucket": "ieee-challenge-app-dfe45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033167602937:android:22a42fcb50b958463dce28",
+        "android_client_info": {
+          "package_name": "com.hamza.ieeechallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033167602937-js86qddjludn221a1j4h1b30lbj3l4p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hamza.ieeechallenge",
+            "certificate_hash": "dbc2f7076d46b51a5b0989006e54084af583cb8b"
+          }
+        },
+        {
+          "client_id": "1033167602937-5b6buvkaq3p9dche5u54q5u2mklb93p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnyuc7gBbRYOwRpkYiRqRA8rFU1uF8Ga0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033167602937-5b6buvkaq3p9dche5u54q5u2mklb93p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
