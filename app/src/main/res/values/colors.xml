@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="fui_transparent">#00000000</color>
+    <color name="AppBarBackground">#192734</color>
+    <color name="ScreenBackground">#15202B</color>
+    <color name="textColor">#A8A7A7</color>
 </resources>

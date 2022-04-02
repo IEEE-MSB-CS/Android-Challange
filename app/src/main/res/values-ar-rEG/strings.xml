@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">واتساب</string>
+    <string name="welcome_to_whatsapp">مرحبا بك في واتساب</string>
+    <string name="welcome_logo_image">ترحيب صورة الشعار</string>
+    <string name="agree_and_continue">موافقه و متابعه</string>
+    <string name="from">من</string>
+    <string name="ask_phone_number">سيرسل واتساب رسالة نصية قصيرة للتحقق من رقم هاتفك. <font color="#0FA7F2">What\'s my number?</font></string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="carrier_sms_charges_may_apply">قد يتم تطبيق رسوم الرسائل القصيرة لمشغل شبكة الجوال</string>
+    <string name="next">التالي</string>
+    <string name="enter_6_digit_code">أدخل الرمز المكون من 6 أرقام</string>
+    <string name="resend_sms">اعادة الرسال الرسالة</string>
+    <string name="call_me">كلمني</string>
+    <string name="hello_blank_fragment">مرحبا جزء فارغ</string>
+    <string name="profile_info">معلومات الشخصي</string>
+    <string name="please_provide_your_name_and_an_optional_profile_photourl">يرجى تقديم اسمك وصورة ملف تعريف اختيارية Url</string>
+    <string name="input_username">أدخل اسم المستخدم</string>
+    <string name="phone_number_too_short">رقم الهاتف الذي أدخلته قصير جدًا بالنسبة للبلد:٪ s \ n \ n قم بتضمين رمز المنطقة إذا كان لديكt.</string>
+    <string name="connecting_message">توصيل</string>
+    <string name="phon_number_verifying">سوف نتحقق من رقم الهاتف: \ n \ n٪ s \ n \ n هل هذا جيد ، أو ترغب في تحرير الرقم?</string>
+    <string name="start_a_chat">ابدأ محادثة</string>
+    <string name="select_contact">حدد جهة اتصال</string>
+    <string name = "whatsapp_logo"> شعار واتساب</string>
+    <string name="type_a_message">اكتب رسالة</string>
+    <string name="menu_item1">مجموعة جديدة</string>
+    <string name="menu_item2">رسالة جماعية جديدة</string>
+    <string name="menu_item3">الاجهزة المرتبطة</string>
+    <string name="menu_item4">الرسائل المميزة بنجمة</string>
+    <string name="menu_item5">الاعدادات</string>
+</resources>

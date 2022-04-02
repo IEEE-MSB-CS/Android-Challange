@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "287507110802",
+    "project_id": "whatsapp-58e12",
+    "storage_bucket": "whatsapp-58e12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287507110802:android:d52e5e7040bfb543d73f4b",
+        "android_client_info": {
+          "package_name": "com.hamza.ieeechallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287507110802-jhp2btqpttdl0v41qt5p0isb4j0246e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgf4sJH4nMbTcBWz7mBL4u4kfQ8qsGZSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287507110802-jhp2btqpttdl0v41qt5p0isb4j0246e9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
