@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<data>
-        <variable
-            name="viewModel"
-            type=".ui.auth.AuthViewModel" />
-    </data>-->
-
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type=".ui.auth.AuthViewModel" />-->
+<!--    </data>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,12 +58,13 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:labelFor="@id/et_verification_code"
-            android:text="@{viewModel.otpCode}"
+
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_wating_text"
             tools:text="920193" />
+        <!--            android:text="@{viewModel.otpCode}"-->
 
         <TextView
             android:id="@+id/tv_enter_verification_code_label"

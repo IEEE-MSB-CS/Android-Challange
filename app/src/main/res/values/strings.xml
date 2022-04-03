@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">IEEEChallenge</string>
+    <string name="app_name">WhatsApp</string>
     <string name="welcome_to_whatsapp">Welcome to WhatsApp</string>
     <string name="welcome_logo_image">Welcome Logo Image</string>
-    <string name="term_of_service">Read our <font color="#0FA7F2">Privacy Policy </font>. Tap \"Agree and continue\" to accept the <font color="#0FA7F2">Terms of Service</font>.</string>
+    <string name="term_of_service" translatable="false">Read our <font color="#0FA7F2">Privacy Policy </font>. Tap \"Agree and continue\" to accept the <font color="#0FA7F2">Terms of Service</font>.</string>
     <string name="agree_and_continue">agree and continue</string>
     <string name="from">from</string>
-    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_your_phone_number" translatable="false">Enter your phone number</string>
     <string name="ask_phone_number">WhatsApp will send an SMS message to verify your phone number. <font color="#0FA7F2">What\'s my number?</font></string>
     <string name="phone_number">phone number</string>
     <string name="carrier_sms_charges_may_apply">Carrier SMS charges may apply</string>
@@ -25,4 +25,9 @@
     <string name="type_a_message">Type a Message</string>
     <string name="waleed_noor_team2"><![CDATA[Waleed & Noor (Team2)]]></string>
     <string name="whatsapp_logo">Whatsapp_Logo</string>
+    <string name="menu_item1">New group</string>
+    <string name="menu_item2">New broadcast</string>
+    <string name="menu_item3">Linked devices</string>
+    <string name="menu_item4">Starred message</string>
+    <string name="menu_item5">Setting</string>
 </resources>

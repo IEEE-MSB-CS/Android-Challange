@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ScreenBackground"
+        android:fitsSystemWindows="true">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+
+            android:id="@+id/appBarUnhide"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/AppBarBackground"
+            android:fitsSystemWindows="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/collapsingToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@id/downToolBar"
+                tools:menu="@menu/menu">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:weightSum="5"
+                    >
+
+                    <TextView
+                        android:id="@+id/AppNameView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="start|center_horizontal"
+                        android:text="@string/app_name"
+                        android:textColor="@color/textColor"
+                        android:textSize="24sp" />
+
+                    <ImageButton
+                        android:id="@+id/search_bt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:background="#00000000"
+                        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/menuBt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:background="#00000000"
+                        android:paddingTop="5dp"
+                        android:onClick="onClickMenu"
+                        app:srcCompat="@drawable/menu"
+                        tools:ignore="InvalidId,SpeakableTextPresentCheck" >
+                    </ImageButton>
+
+                </LinearLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <androidx.appcompat.widget.Toolbar
+
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/downToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_collapseMode="pin"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
+        <com.google.android.material.appbar.AppBarLayout
+
+            android:id="@+id/hide_Bar"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/AppBarBackground"
+            android:visibility="gone">
+            <androidx.appcompat.widget.Toolbar
+
+                android:id="@+id/action_bartoolBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/AppBarBackground"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_name"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
