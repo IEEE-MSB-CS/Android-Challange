@@ -21,7 +21,7 @@ import com.hamza.ieeechallenge.Adapters.FoodCategoryAdapter;
 import com.hamza.ieeechallenge.Adapters.FoodAdapter;
 import com.hamza.ieeechallenge.Adapters.UpdateFoodRC;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.ROOM.DataBase;
+import com.hamza.ieeechallenge.databinding.FragmentHomeBinding;
 import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.Food;
 import com.hamza.ieeechallenge.model.JSONResponse;
@@ -38,7 +38,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment implements UpdateFoodRC {
-
+    private FragmentHomeBinding binding;
   RecyclerView rchorizontal , rcVertical;
   ArrayList<FoodCategory> foodCategoryList;
   ArrayList<Food> foodList;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
     private ImageView primage;
     private TextView price;
     Button addtocart;
-  TextView name;
+    TextView name;
     ArrayList<Food> pizzaList ;
     ArrayList<Food> ice_creamList ;
     ArrayList<Food> burgerList ;
@@ -58,11 +58,7 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        name = root.findViewById(R.id.text);
-        rchorizontal = root.findViewById(R.id.home_recylerview);
-        rcVertical = root.findViewById(R.id.home_recylerviewVertical);
-
+        binding = FragmentHomeBinding.inflate(getLayoutInflater(), container, false);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://run.mocky.io/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -76,11 +72,11 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
                     JSONResponse jsonResponse;
                     jsonResponse = response.body();
                     assert jsonResponse != null;
-                     pizzaList = new ArrayList<>(Arrays.asList(jsonResponse.getPizza()));
-                     ice_creamList = new ArrayList<>(Arrays.asList(jsonResponse.getIce_cream()));
-                     burgerList = new ArrayList<>(Arrays.asList(jsonResponse.getBurger()));
-                     saladList = new ArrayList<>(Arrays.asList(jsonResponse.getSalad()));
-                     sandwichList = new ArrayList<>(Arrays.asList(jsonResponse.getSandwich()));
+                    pizzaList = new ArrayList<>(Arrays.asList(jsonResponse.getPizza()));
+                    ice_creamList = new ArrayList<>(Arrays.asList(jsonResponse.getIce_cream()));
+                    burgerList = new ArrayList<>(Arrays.asList(jsonResponse.getBurger()));
+                    saladList = new ArrayList<>(Arrays.asList(jsonResponse.getSalad()));
+                    sandwichList = new ArrayList<>(Arrays.asList(jsonResponse.getSandwich()));
 
                     //Horizontal recyclerview
                     foodCategoryList = new ArrayList<>();
@@ -91,11 +87,11 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
                     foodCategoryList.add(new FoodCategory(R.drawable.sandwich22, "Sandwich"));
 
                     foodCategoryAdapter =  new FoodCategoryAdapter(HomeFragment.this,getActivity(), foodCategoryList,pizzaList,ice_creamList,burgerList,saladList,sandwichList);
-                    rchorizontal.setAdapter(foodCategoryAdapter);
+                    binding.homeRecylerview.setAdapter(foodCategoryAdapter);
 
-                    rchorizontal.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL,false));
-                    rchorizontal.setHasFixedSize(true);
-                    rchorizontal.setNestedScrollingEnabled(false);
+                    binding.homeRecylerview.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL,false));
+                    binding.homeRecylerview.setHasFixedSize(true);
+                    binding.homeRecylerview.setNestedScrollingEnabled(false);
                 }
 
             }
@@ -107,22 +103,17 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
         });
 
 
-      // Vertical recyclerView
+        // Vertical recyclerView
         foodList = new ArrayList<>();
 
         foodAdapter =  new FoodAdapter(getActivity(), foodList);
 
-        rcVertical.setAdapter(foodAdapter);
-        rcVertical.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.VERTICAL,false));
+        binding.homeRecylerviewVertical.setAdapter(foodAdapter);
+        binding.homeRecylerviewVertical.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.VERTICAL,false));
 
 
 
-
-
-
-
-
-        return root;
+        return binding.getRoot();
 
     }
 
@@ -130,6 +121,6 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
     public void callback(int position, ArrayList<Food> list) {
         foodAdapter = new FoodAdapter(getContext(), list);
         foodAdapter.notifyDataSetChanged();
-        rcVertical.setAdapter(foodAdapter);
+        binding.homeRecylerviewVertical.setAdapter(foodAdapter);
     }
 }
