@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392894407400",
+    "project_id": "ieeechallenge-whatsapp-clone",
+    "storage_bucket": "ieeechallenge-whatsapp-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392894407400:android:8fc67cc65e8e35eefc9f5d",
+        "android_client_info": {
+          "package_name": "com.hamza.ieeechallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392894407400-3pnbpeq5e531ujtra3atc8n02nad794o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD024b_Ebg-ZfBCQpVKNg03UDYlZUIuEIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392894407400-3pnbpeq5e531ujtra3atc8n02nad794o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
