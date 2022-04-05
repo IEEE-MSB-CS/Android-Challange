@@ -1,30 +1,32 @@
 package com.hamza.ieeechallenge.model;
 
 public class CartModule {
-    String OrderId;
+    int orderId;
     String userId;
+    String status;
+    String title;
     String image;
-    String name;
-    String price;
-    int id;
+    String restaurantName;
+    int quantity;
+    double price;
 
-
-    public CartModule(String image, String name, String price, int id) {
+    public CartModule(int orderId, String userId, String status, String title, String image, String restaurantName, int quantity, double price) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.status = status;
+        this.title = title;
         this.image = image;
-        this.name = name;
+        this.restaurantName = restaurantName;
+        this.quantity = quantity;
         this.price = price;
-        this.id = id;
     }
 
-    public CartModule() {
+    public int getOrderId() {
+        return orderId;
     }
 
-    public String getOrderId() {
-        return OrderId;
-    }
-
-    public void setOrderId(String orderId) {
-        OrderId = orderId;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getUserId() {
@@ -35,27 +37,20 @@ public class CartModule {
         this.userId = userId;
     }
 
-    public CartModule(String image, String name, String price) {
-        this.image = image;
-        this.name = name;
-        this.price = price;
+    public String getStatus() {
+        return status;
     }
 
-    public CartModule(String name, String price) {
-        this.name = name;
-        this.price = price;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public CartModule(String orderId) {
-        OrderId = orderId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getImage() {
@@ -66,19 +61,27 @@ public class CartModule {
         this.image = image;
     }
 
-    public String getName() {
-        return name;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

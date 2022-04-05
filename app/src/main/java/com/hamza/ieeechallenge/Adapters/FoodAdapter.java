@@ -1,7 +1,6 @@
 package com.hamza.ieeechallenge.Adapters;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +16,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.auth.User;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.activities.FoodDetailActivity;
-import com.hamza.ieeechallenge.model.CartModule;
 import com.hamza.ieeechallenge.model.Food;
-import com.hamza.ieeechallenge.ui.MyCartFragment;
+import com.hamza.ieeechallenge.ui.cart.MyCartFragment;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 

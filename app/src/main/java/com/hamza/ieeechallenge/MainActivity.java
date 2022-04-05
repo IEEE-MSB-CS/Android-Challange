@@ -19,11 +19,5 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        binding.btnSignOut.setOnClickListener(view1 -> {
-            firebaseAuth.signOut();
-            startActivity(new Intent(MainActivity.this , SendOtpActivity.class));
-        });
     }
 }
