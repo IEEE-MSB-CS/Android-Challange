@@ -21,17 +21,28 @@ import com.hamza.ieeechallenge.Adapters.FoodCategoryAdapter;
 import com.hamza.ieeechallenge.Adapters.FoodAdapter;
 import com.hamza.ieeechallenge.Adapters.UpdateFoodRC;
 import com.hamza.ieeechallenge.R;
+<<<<<<< HEAD
 import com.hamza.ieeechallenge.activities.LastOrderActivity;
+=======
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 import com.hamza.ieeechallenge.databinding.FragmentHomeBinding;
 import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.Food;
 import com.hamza.ieeechallenge.model.JSONResponse;
+<<<<<<< HEAD
 import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
+=======
+import com.hamza.ieeechallenge.roomDatabase.Favourite;
+import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
+import com.hamza.ieeechallenge.ui.cart.CartViewModel;
+import com.hamza.ieeechallenge.ui.cart.MyCartFragment;
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -112,6 +123,7 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
             }
         });
 
+<<<<<<< HEAD
 
 
 
@@ -181,8 +193,25 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
                 filter.add(item);
             }
         }
+=======
+        return binding.getRoot();
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 
         foodAdapter.filterList(filter);
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public void callback(int position, ArrayList<Food> list ) {
+        foodAdapter = new FoodAdapter(getContext(), list);
+        foodAdapter.notifyDataSetChanged();
+        binding.homeRecylerviewVertical.setAdapter(foodAdapter);
+        binding.homeRecylerviewVertical.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.VERTICAL,false));
+
+        FavouriteViewModel favouriteViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
+        foodAdapter.setData(favouriteViewModel);
+    }
+
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 }

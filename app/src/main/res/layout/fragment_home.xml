@@ -99,7 +99,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="24dp"/>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
     </androidx.constraintlayout.widget.ConstraintLayout>
 
