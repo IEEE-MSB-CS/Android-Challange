@@ -8,5 +8,6 @@ public class CONSTANTS {
     static public String FULLNUMBER = "fullnumber";
     static public String VERIFYID = "verificationId";
     static public String TYPE = "type";
+    static public String ORDER = "orders";
 
 }

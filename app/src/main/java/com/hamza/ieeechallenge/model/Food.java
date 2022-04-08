@@ -1,5 +1,9 @@
 package com.hamza.ieeechallenge.model;
 
+import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
+
+import java.util.List;
+
 public class Food {
     int id;
     String title;
@@ -8,6 +12,8 @@ public class Food {
     String price;
     String description;
     String image;
+    String status;
+    List<Cart>cartList;
 
     public Food(int id, String title, String restaurant, double rating, String price, String description, String image) {
         this.id = id;
@@ -17,6 +23,31 @@ public class Food {
         this.price = price;
         this.description = description;
         this.image = image;
+    }
+
+    public Food(String title, String restaurant, String price, String image, String status) {
+        this.title = title;
+        this.restaurant = restaurant;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+    }
+
+    public Food(String title, String restaurant, String price, String image, String status, List<Cart> cartList) {
+        this.title = title;
+        this.restaurant = restaurant;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+        this.cartList = cartList;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {

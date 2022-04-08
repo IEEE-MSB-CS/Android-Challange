@@ -19,12 +19,13 @@
 
     <fragment
         android:id="@+id/nav_favourite"
-        android:name="com.hamza.ieeechallenge.ui.Favourite.FavouritFragment"
+        android:name="com.hamza.ieeechallenge.ui.Favourite.FavouriteFragment"
         android:label="@string/favourites"
         tools:layout="@layout/fragment_favourit" />
     <fragment
         android:id="@+id/nav_mycart"
-        android:name="com.hamza.ieeechallenge.ui.MyCartFragment"
+        android:name="com.hamza.ieeechallenge.ui.cart.MyCartFragment"
         android:label="@string/myCart"
         tools:layout="@layout/fragment_my_cart" />
+
 </navigation>

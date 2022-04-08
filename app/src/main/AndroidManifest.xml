@@ -12,10 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IEEEChallenge">
-        <activity android:name=".activities.FoodDetailActivity"></activity>
+        <activity
+            android:name=".activities.LastOrderActivity"
+            android:exported="false" />
+        <activity android:name=".activities.FoodDetailActivity" />
         <activity
             android:name=".activities.DetailsDailyMealActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="false"

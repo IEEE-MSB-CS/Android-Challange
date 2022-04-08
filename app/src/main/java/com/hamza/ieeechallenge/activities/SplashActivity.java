@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(this::checkAuthState, 2000);
+        new Handler().postDelayed(this::checkAuthState, 3000);
     }
 
     private void checkAuthState() {

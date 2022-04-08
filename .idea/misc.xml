@@ -10,9 +10,13 @@
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/drawable/round_bg.xml" value="0.25092592592592594" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/drawable/search_bg.xml" value="0.25092592592592594" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/drawable/side_nav_bar.xml" value="0.25092592592592594" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/drawable/view.xml" value="0.23703703703703705" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_details_daily_meal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_last_order.xml" value="0.2463768115942029" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_send_otp.xml" value="0.2" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_splash.xml" value="0.12360688956433637" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/activity_verify_otp.xml" value="0.25" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/app_bar_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/content_navigation.xml" value="0.25416666666666665" />
@@ -21,13 +25,17 @@
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_daily_meal.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_favourit.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_last_ordersragment.xml" value="0.2463768115942029" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_my_cart.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/fragment_my_cartk.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/home.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/home_horizontal_item.xml" value="0.12360688956433637" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/home_vertical_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/include_bottom_toolbar.xml" value="0.17255434782608695" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/lastorder_item.xml" value="0.2463768115942029" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/layout/nav_header_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-1/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android-Challange-Team-1/app/src/main/res/menu/navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Android-Challange-Team-11/Android-Challange-Team-1/app/src/main/res/drawable/btn_bg_design.xml" value="0.18541666666666667" />
         <entry key="..\:/Android-Challange-Team-11/Android-Challange-Team-1/app/src/main/res/drawable/side_nav_bar.xml" value="0.18541666666666667" />
         <entry key="..\:/Android-Challange-Team-11/Android-Challange-Team-1/app/src/main/res/layout/activity_details_daily_meal.xml" value="0.1" />
