@@ -12,6 +12,7 @@ import android.content.Context;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,16 +20,23 @@ import com.google.firebase.auth.FirebaseUser;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.activities.FoodDetailActivity;
 import com.hamza.ieeechallenge.model.Food;
+import com.hamza.ieeechallenge.roomDatabase.Favourite;
+import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 import com.hamza.ieeechallenge.ui.cart.MyCartFragment;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
+import java.util.List;
+=======
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     Context context;
     ArrayList<Food> foodList;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    public FoodAdapter(Context context, ArrayList<Food> foodList) {
+    FavouriteViewModel favouriteViewModel;
+    public FoodAdapter(Context context, ArrayList<Food> foodList ) {
         this.context = context;
         this.foodList = foodList;
     }
@@ -48,43 +56,30 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.restaurantName.setText(foodList.get(position).getRestaurant());
         holder.price.setText(foodList.get(position).getPrice());
 
-        holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, FoodDetailActivity.class);
-                intent.putExtra("title",foodList.get(position).getTitle());
-                intent.putExtra("image",foodList.get(position).getImage());
-                intent.putExtra("price",foodList.get(position).getPrice());
-                intent.putExtra("rating",foodList.get(position).getRating());
-                intent.putExtra("restaurantName",foodList.get(position).getRestaurant());
-                intent.putExtra("description",foodList.get(position).getDescription());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
+        holder.image.setOnClickListener(view -> {
+            openFoodDetailActivity(position);
         });
-        holder.add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MyCartFragment.class);
-                intent.putExtra("title",foodList.get(position).getTitle());
-                intent.putExtra("image",foodList.get(position).getImage());
-                intent.putExtra("price",foodList.get(position).getPrice());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
+        holder.favourite.setOnClickListener(view ->{
+            addFavouriteItemToDatabase(position);
         });
-
     }
+
 
     @Override
     public int getItemCount() {
         return (foodList == null)? 0 : foodList.size();
     }
 
+
+    public void filterList(ArrayList<Food> filter){
+    foodList = filter;
+    notifyDataSetChanged();
+
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView image;
+        ImageView image , favourite;
         TextView title,restaurantName,rating,price;
-        Button add;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,7 +87,41 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             title = itemView.findViewById(R.id.productName);
             restaurantName = itemView.findViewById(R.id.tv_restaurant_name);
             price = itemView.findViewById(R.id.price);
-            add = itemView.findViewById(R.id.add_tocart);
+            favourite = itemView.findViewById(R.id.iv_heart);
         }
     }
+
+    private void openFoodDetailActivity(int position) {
+        Intent intent = new Intent(context, FoodDetailActivity.class);
+        intent.putExtra("title",foodList.get(position).getTitle());
+        intent.putExtra("image",foodList.get(position).getImage());
+        intent.putExtra("price",foodList.get(position).getPrice());
+        intent.putExtra("rating",foodList.get(position).getRating());
+        intent.putExtra("restaurantName",foodList.get(position).getRestaurant());
+        intent.putExtra("description",foodList.get(position).getDescription());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public void addFavouriteItemToDatabase(int position){
+        Favourite favouriteItem = new Favourite(foodList.get(position).getId() , foodList.get(position).getTitle(),
+                foodList.get(position).getRestaurant() ,foodList.get(position).getRating(),
+                foodList.get(position).getPrice() , foodList.get(position).getDescription() , foodList.get(position).getImage());
+        favouriteViewModel.addToFavourite(favouriteItem);
+<<<<<<< HEAD
+        Toast.makeText(context.getApplicationContext(), "Added to Favourite", Toast.LENGTH_SHORT).show();
+=======
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
+    }
+
+    public void setData(FavouriteViewModel favouriteViewModel){
+        this.favouriteViewModel = favouriteViewModel;
+    }
+
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 }

@@ -1,11 +1,7 @@
-package com.hamza.ieeechallenge.roomDatabase
+package com.hamza.ieeechallenge.roomDatabase.cartDatabase
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import retrofit2.http.DELETE
+import androidx.room.*
 
 @Dao
 interface CartDao {
@@ -14,4 +10,11 @@ interface CartDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addToCart(cart : Cart)
+
+    @Update
+    suspend fun updateCartItem(cart : Cart)
+
+    @Delete
+    suspend fun deleteCartItem(cart : Cart)
+
 }

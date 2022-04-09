@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.Food;
+import com.hamza.ieeechallenge.roomDatabase.Favourite;
+import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapter.ViewHolder> {
 
@@ -110,4 +113,6 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
             cardView = itemView.findViewById(R.id.cardview);
         }
     }
+
+
 }

@@ -4,11 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.hamza.ieeechallenge.model.CartModule
 import com.hamza.ieeechallenge.repositories.CartRepository
-import com.hamza.ieeechallenge.roomDatabase.Cart
-import com.hamza.ieeechallenge.roomDatabase.CartDao
-import com.hamza.ieeechallenge.roomDatabase.CartDatabase
+import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart
+import com.hamza.ieeechallenge.roomDatabase.cartDatabase.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -17,7 +15,7 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     private val repository : CartRepository
 
     init {
-        val cartDao = CartDatabase.getDatabase(application).getCartDao()
+        val cartDao = MyDatabase.getDatabase(application).getCartDao()
         repository = CartRepository(cartDao)
         readAllData = repository.readAllData
     }
@@ -25,6 +23,18 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     fun addToCart(cart: Cart){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addToCart(cart)
+        }
+    }
+
+    fun updateCartItem(cart : Cart){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCartItem(cart)
+        }
+    }
+
+    fun deleteCartItem(cart : Cart){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteCartItem(cart)
         }
     }
 }

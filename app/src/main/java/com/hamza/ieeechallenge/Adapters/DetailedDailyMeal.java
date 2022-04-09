@@ -34,7 +34,6 @@ public class DetailedDailyMeal  extends RecyclerView.Adapter<DetailedDailyMeal.V
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getAdapterPosition();
         holder.imageMeal.setImageResource(dailyMealDetialeds.get(position).getImage());
         holder.name.setText(dailyMealDetialeds.get(position).getName());
         holder.description.setText(dailyMealDetialeds.get(position).getDescription());
