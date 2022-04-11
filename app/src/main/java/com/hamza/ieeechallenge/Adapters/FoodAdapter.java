@@ -25,10 +25,7 @@ import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 import com.hamza.ieeechallenge.ui.cart.MyCartFragment;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
@@ -108,20 +105,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 foodList.get(position).getRestaurant() ,foodList.get(position).getRating(),
                 foodList.get(position).getPrice() , foodList.get(position).getDescription() , foodList.get(position).getImage());
         favouriteViewModel.addToFavourite(favouriteItem);
-<<<<<<< HEAD
         Toast.makeText(context.getApplicationContext(), "Added to Favourite", Toast.LENGTH_SHORT).show();
-=======
->>>>>>> 8810404818562217df4808e31d60af7da2926aa1
     }
 
     public void setData(FavouriteViewModel favouriteViewModel){
         this.favouriteViewModel = favouriteViewModel;
     }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 8810404818562217df4808e31d60af7da2926aa1
 }

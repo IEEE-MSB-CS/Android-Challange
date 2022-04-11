@@ -15,6 +15,9 @@ public class Food {
     String status;
     List<Cart>cartList;
 
+    public Food() {
+    }
+
     public Food(int id, String title, String restaurant, double rating, String price, String description, String image) {
         this.id = id;
         this.title = title;
