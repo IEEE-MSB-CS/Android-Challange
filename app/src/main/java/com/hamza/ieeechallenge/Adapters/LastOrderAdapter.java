@@ -14,26 +14,33 @@ import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.model.Food;
 import com.hamza.ieeechallenge.model.OrderList;
+import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LastOrderAdapter extends RecyclerView.Adapter<LastOrderAdapter.ViewHolder> {
-    List<Food> orderLists = new ArrayList<>();
+    List<Cart> orderLists = new ArrayList<>();
     Context context;
 
-    public LastOrderAdapter(List<Food> orderLists, Context context) {
+    public LastOrderAdapter(List<Cart> orderLists) {
         this.orderLists = orderLists;
-        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LastOrderAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lastorder_item,parent,false));    }
+        return new LastOrderAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.chiledrv_item,parent,false));    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.name.setText(orderLists.get(position).getTitle());
+        holder.price.setText((int) orderLists.get(position).getPrice());
+        holder.restName.setText(orderLists.get(position).getRestaurantName());
+        holder.status.setText(orderLists.get(position).getStatus());
+        Glide.with(context)
+                .load(orderLists.get(position).getImage())
+                .into(holder.imageView);
 
     }
 
