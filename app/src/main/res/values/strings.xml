@@ -23,7 +23,7 @@
     <string name="start_a_chat">Start a chat</string>
     <string name="select_contact">Select contact</string>
     <string name="type_a_message">Type a Message</string>
-    <string name="waleed_noor_team2"><![CDATA[Waleed & Noor (Team2)]]></string>
+    <string name="waleed_noor_team2" translatable="false"><![CDATA[Waleed & Noor (Team2)]]></string>
     <string name="whatsapp_logo">Whatsapp_Logo</string>
     <string name="menu_item1">New group</string>
     <string name="menu_item2">New broadcast</string>
