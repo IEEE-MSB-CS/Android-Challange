@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "287507110802",
-    "project_id": "whatsapp-58e12",
-    "storage_bucket": "whatsapp-58e12.appspot.com"
+    "project_number": "392894407400",
+    "firebase_url": "https://ieeechallenge-whatsapp-clone-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ieeechallenge-whatsapp-clone",
+    "storage_bucket": "ieeechallenge-whatsapp-clone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:287507110802:android:d52e5e7040bfb543d73f4b",
+        "mobilesdk_app_id": "1:392894407400:android:8fc67cc65e8e35eefc9f5d",
         "android_client_info": {
           "package_name": "com.hamza.ieeechallenge"
         }
       },
       "oauth_client": [
         {
-          "client_id": "287507110802-jhp2btqpttdl0v41qt5p0isb4j0246e9.apps.googleusercontent.com",
+          "client_id": "392894407400-335d9k3gqtub3tutheh53qn8s08c1jbs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hamza.ieeechallenge",
+            "certificate_hash": "4d6e05700e8210021a0ba5c1f9f0336c031c4274"
+          }
+        },
+        {
+          "client_id": "392894407400-3pnbpeq5e531ujtra3atc8n02nad794o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAgf4sJH4nMbTcBWz7mBL4u4kfQ8qsGZSg"
+          "current_key": "AIzaSyD024b_Ebg-ZfBCQpVKNg03UDYlZUIuEIM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "287507110802-jhp2btqpttdl0v41qt5p0isb4j0246e9.apps.googleusercontent.com",
+              "client_id": "392894407400-3pnbpeq5e531ujtra3atc8n02nad794o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

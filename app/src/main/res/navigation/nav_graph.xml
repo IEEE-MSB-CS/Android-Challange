@@ -69,6 +69,6 @@
         <action
             android:id="@+id/action_splashFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/nav_graph" />
     </fragment>
 </navigation>
