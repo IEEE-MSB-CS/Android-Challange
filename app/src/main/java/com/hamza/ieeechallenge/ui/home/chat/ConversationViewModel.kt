@@ -14,8 +14,11 @@ import com.hamza.ieeechallenge.data.model.User
 import com.hamza.ieeechallenge.data.repositories.ChatRepository
 import com.hamza.ieeechallenge.data.repositories.UserRepository
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ConversationViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ConversationViewModel @Inject constructor(
     private val chatRepository: ChatRepository,
     private val userRepository: UserRepository
 ) : ViewModel() {

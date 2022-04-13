@@ -21,18 +21,22 @@ import com.hamza.ieeechallenge.data.repositories.UtilRepository
 import com.hamza.ieeechallenge.utils.Event
 import com.hamza.ieeechallenge.utils.Resource
 import com.hamza.ieeechallenge.utils.formatDialCode
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class AuthViewModel @ViewModelInject constructor(
+@HiltViewModel
+class AuthViewModel @Inject constructor(
     private val application: Application,
     private val utilRepository: UtilRepository,
     private val userRepository: UserRepository
 ) : ViewModel(){
+
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()

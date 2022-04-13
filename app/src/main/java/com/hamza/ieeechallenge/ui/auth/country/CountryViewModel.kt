@@ -9,10 +9,13 @@ import com.hamza.ieeechallenge.data.model.CountryCallingCodes
 import com.hamza.ieeechallenge.data.repositories.UtilRepository
 import com.hamza.ieeechallenge.utils.Resource
 import com.google.firebase.firestore.ktx.toObjects
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CountryViewModel @ViewModelInject constructor(private val utilRepository: UtilRepository) : ViewModel() {
+@HiltViewModel
+class CountryViewModel @Inject constructor(private val utilRepository: UtilRepository) : ViewModel() {
 
     private val _countryList = MutableLiveData<Resource<List<CountryCallingCodes>>>()
     val countryList: LiveData<Resource<List<CountryCallingCodes>>>

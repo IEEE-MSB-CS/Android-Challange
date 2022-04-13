@@ -13,13 +13,16 @@ import com.google.firebase.firestore.ktx.toObjects
 import com.hamza.ieeechallenge.data.model.User
 import com.hamza.ieeechallenge.data.repositories.UserRepository
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class UserViewModel @ViewModelInject constructor(private val userRepository: UserRepository) :
+@HiltViewModel
+class UserViewModel @Inject constructor(private val userRepository: UserRepository) :
     ViewModel() {
 
     private val firebaseAuth: FirebaseAuth by lazy {

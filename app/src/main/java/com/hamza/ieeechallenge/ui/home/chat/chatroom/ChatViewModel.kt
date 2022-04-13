@@ -12,10 +12,13 @@ import com.hamza.ieeechallenge.data.model.Conversation
 import com.hamza.ieeechallenge.data.model.User
 import com.hamza.ieeechallenge.data.repositories.ChatRepository
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChatViewModel @ViewModelInject constructor(private val chatRepository: ChatRepository) :
+@HiltViewModel
+class ChatViewModel @Inject constructor(private val chatRepository: ChatRepository) :
     ViewModel() {
 
     private val firebaseAuth: FirebaseAuth by lazy {

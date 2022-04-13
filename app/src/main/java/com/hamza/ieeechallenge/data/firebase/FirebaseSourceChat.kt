@@ -4,6 +4,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.hamza.ieeechallenge.data.model.Conversation
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+
 
 class FirebaseSourceChat {
     private val db: FirebaseFirestore by lazy {
