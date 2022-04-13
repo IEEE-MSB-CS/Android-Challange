@@ -38,19 +38,8 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/country_flag"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Indonesia" />
+            tools:text="Egypt" />
 
-        <!--        <TextView-->
-        <!--            android:id="@+id/tv_country_local_name"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="8dp"-->
-        <!--            android:text="@{country.local}"-->
-        <!--            local_name="@{country}"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@id/country_flag"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/tv_country_name"-->
-        <!--            tools:text="indonesia" />-->
 
         <ImageView
             android:id="@+id/img_check"
@@ -73,7 +62,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/img_check"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="+62" />
+            tools:text="+20" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

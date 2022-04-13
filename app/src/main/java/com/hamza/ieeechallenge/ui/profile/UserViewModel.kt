@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import com.hamza.ieeechallenge.data.model.User
 import com.hamza.ieeechallenge.data.repositories.UserRepository
 import com.hamza.ieeechallenge.utils.Resource

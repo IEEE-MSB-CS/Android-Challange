@@ -1,10 +1,14 @@
 package com.hamza.ieeechallenge.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
-    var userName :String? = "",
-    var phone :String? = "",
-    var photoUrl : String? = null ,
-    var isOneire : Boolean = false,
-    var lastSeen : Long = 0L,
-    var about :String = ""
-    )
+    val username: String? = "",
+    val phone: String? = "",
+    val photoUrl: String? = null,
+    val isOnline: Boolean = false,
+    val lastSeen: Long = 0L,
+    val about: String = ""
+): Parcelable

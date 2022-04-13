@@ -47,7 +47,7 @@ class FirebaseSourceUser {
             .await()
     }
 
-    suspend fun createUser(user: User, uid: String) {
+    suspend fun createUser(user: com.hamza.ieeechallenge.data.model.User, uid: String) {
         db.collection("users")
             .document(uid)
             .set(user)

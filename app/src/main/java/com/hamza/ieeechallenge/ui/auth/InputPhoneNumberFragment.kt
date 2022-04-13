@@ -1,5 +1,6 @@
 package com.hamza.ieeechallenge.ui.auth
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ class InputPhoneNumberFragment : Fragment() {
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var binding: FragmentInputPhoneNumberBinding
 
+    @SuppressLint("StringFormatInvalid")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,6 +59,7 @@ class InputPhoneNumberFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun showConfirmationDialog() {
         val builder =
             AlertDialog.Builder(requireContext())

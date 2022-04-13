@@ -3,6 +3,7 @@ package com.hamza.ieeechallenge.utils
 import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.hamza.ieeechallenge.R
 import com.hamza.ieeechallenge.data.model.CountryCallingCodes

@@ -3,4 +3,9 @@ package com.hamza.ieeechallenge.data.model
 
 import java.util.*
 
-data class Chat(var massage :String, var timpSlamp : Long, var semderId : String, var reciverId : String )
+data class Chat(
+    val message: String,
+    val timestamp: Long,
+    val senderId: String,
+    val receiverId: String
+    )

@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.TaskExecutors
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.hamza.ieeechallenge.data.model.CountryCallingCodes
 import com.hamza.ieeechallenge.data.repositories.UserRepository
@@ -89,7 +90,7 @@ class AuthViewModel @ViewModelInject constructor(
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return code.toUpperCase(Locale.US)
+        return code.uppercase(Locale.US)
     }
 
     fun getCountryCodes() {
@@ -118,15 +119,16 @@ class AuthViewModel @ViewModelInject constructor(
         }
     }
 
+
     fun sendVerificationCode(phoneNumber: String) {
         Log.i("MYTAG", "sending verification code")
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNumber,
-            60,
-            TimeUnit.SECONDS,
-            TaskExecutors.MAIN_THREAD,
-            mCallback
-        )
+
+        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setCallbacks(mCallback)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     private val mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -145,7 +147,7 @@ class AuthViewModel @ViewModelInject constructor(
             val code = phoneAuthCredential.smsCode
             Log.i("MYTAG", "onVerificationCompleted: ${phoneAuthCredential.smsCode}")
             if (code != null) {
-                _otpCode.value = code
+                _otpCode.value = code!!
                 verifyCode(code)
             }
         }

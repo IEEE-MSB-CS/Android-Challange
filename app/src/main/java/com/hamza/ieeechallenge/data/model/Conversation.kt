@@ -1,8 +1,8 @@
 package com.hamza.ieeechallenge.data.model
 
 data class Conversation(
-    var chatWithId :String = "",
-    var lastMessage : String = "",
-    var timeStamp : Long = 0L ,
-    var umReadChatCount : Int = 0
+    val chatWithId: String = "",
+    val lastMessage: String = "",
+    val timestamp: Long = 0L,
+    val unreadChatCount: Int = 0
     )

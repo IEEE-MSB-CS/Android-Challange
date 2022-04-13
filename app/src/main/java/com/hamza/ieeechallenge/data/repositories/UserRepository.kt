@@ -2,7 +2,6 @@ package com.hamza.ieeechallenge.data.repositories
 
 import android.net.Uri
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.firestore.auth.User
 import com.hamza.ieeechallenge.data.firebase.FirebaseSourceUser
 import javax.inject.Inject
 
@@ -15,7 +14,7 @@ class UserRepository @Inject constructor(private val firebase: FirebaseSourceUse
 
     suspend fun getUserList() = firebase.getUserList()
 
-    suspend fun createUser(user: User, uid: String) = firebase.createUser(user, uid)
+    suspend fun createUser(user: com.hamza.ieeechallenge.data.model.User, uid: String) = firebase.createUser(user, uid)
 
     suspend fun checkIfPhoneNumberAlreadyRegistered(phoneNumber: String?) =
         firebase.checkIfPhoneNumberAlreadyRegistered(phoneNumber)
