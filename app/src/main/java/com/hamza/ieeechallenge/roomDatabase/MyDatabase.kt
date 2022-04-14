@@ -1,11 +1,11 @@
-package com.hamza.ieeechallenge.roomDatabase.cartDatabase
+package com.hamza.ieeechallenge.roomDatabase
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.hamza.ieeechallenge.roomDatabase.Favourite
-import com.hamza.ieeechallenge.roomDatabase.FavouriteDao
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart
+import com.hamza.ieeechallenge.roomDatabase.entities.Favourite
 
 @Database(entities = [Cart::class , Favourite::class], version = 1, exportSchema = false)
 abstract class MyDatabase : RoomDatabase() {
@@ -22,7 +22,7 @@ abstract class MyDatabase : RoomDatabase() {
                     val instance = Room.databaseBuilder(
                         context.applicationContext,
                         MyDatabase::class.java,
-                        "database"
+                        "mdatabase"
                     ).build()
                     INSTANCE = instance
                     instance

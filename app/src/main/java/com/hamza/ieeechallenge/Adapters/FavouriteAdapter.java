@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.activities.FoodDetailActivity;
-import com.hamza.ieeechallenge.roomDatabase.Favourite;
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
+import com.hamza.ieeechallenge.roomDatabase.entities.Favourite;
 import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -50,12 +49,10 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
         holder.title.setText(favouriteList.get(position).getTitle());
         holder.restaurantName.setText(favouriteList.get(position).getRestaurantName());
         holder.price.setText(favouriteList.get(position).getPrice());
-        holder.favourite.setOnClickListener(view -> {
-            deleteFavouriteItem(position);
-        });
-        holder.cardView.setOnClickListener(view ->{
-            openFoodDetailActivity(position);
-        });
+
+        holder.favourite.setOnClickListener(view -> deleteFavouriteItem(position));
+
+        holder.cardView.setOnClickListener(view -> openFoodDetailActivity(position));
     }
 
     @Override
@@ -67,7 +64,6 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
         ImageView image , favourite;
         TextView title , restaurantName , price ;
         CardView cardView;
-
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -83,7 +79,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     void deleteFavouriteItem(int position ){
         Favourite favouriteItem = new Favourite(favouriteList.get(position).getId() , favouriteList.get(position).getTitle(),
                 favouriteList.get(position).getRestaurantName() ,favouriteList.get(position).getRating(),
-                favouriteList.get(position).getPrice() , favouriteList.get(position).getDescription() , favouriteList.get(position).getImage());
+                favouriteList.get(position).getPrice() , favouriteList.get(position).getDescription() , favouriteList.get(position).getImage() , "1");
         favouriteViewModel.deleteFavouriteItem(favouriteItem);
     }
 

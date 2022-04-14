@@ -1,9 +1,9 @@
 package com.hamza.ieeechallenge.model;
 
 public class DailyMealDetialed {
-    int Image;
+    String Image;
     String name;
-    String description;
+    String restaurant;
     String price;
     String type;
 
@@ -11,10 +11,10 @@ public class DailyMealDetialed {
     public DailyMealDetialed() {
     }
 
-    public DailyMealDetialed(int image, String name, String description, String price) {
+    public DailyMealDetialed(String image, String name, String restaurant, String price) {
         Image = image;
         this.name = name;
-        this.description = description;
+        this.restaurant = restaurant;
         this.price = price;
     }
 
@@ -26,11 +26,11 @@ public class DailyMealDetialed {
         this.type = type;
     }
 
-    public int getImage() {
+    public String getImage() {
         return Image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         Image = image;
     }
 
@@ -42,12 +42,12 @@ public class DailyMealDetialed {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRestaurant() {
+        return restaurant;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getPrice() {

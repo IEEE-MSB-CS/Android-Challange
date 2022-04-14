@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.model.Food;
-import com.hamza.ieeechallenge.model.OrderList;
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart;
 
 import java.util.ArrayList;
 import java.util.List;

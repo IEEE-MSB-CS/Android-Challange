@@ -1,13 +1,17 @@
 package com.hamza.ieeechallenge.repositories
 
 import androidx.lifecycle.LiveData
-import com.hamza.ieeechallenge.roomDatabase.Favourite
+import com.hamza.ieeechallenge.roomDatabase.entities.Favourite
 import com.hamza.ieeechallenge.roomDatabase.FavouriteDao
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart
 
 class FavouriteRepository(private val favouriteDao: FavouriteDao) {
 
     val readAllData : LiveData<List<Favourite>> = favouriteDao.readAllData()
+
+     fun isFavourite(name : String) : LiveData<String>{
+        return favouriteDao.getIsFavourite(name)
+    }
+
     suspend fun addToFavourite(favouriteItem : Favourite){
         favouriteDao.addToFavourite(favouriteItem)
     }

@@ -22,71 +22,85 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.TimeUnit;
 
 public class SendOtpActivity extends AppCompatActivity {
+
     private ActivitySendOtpBinding binding;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivitySendOtpBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-
         binding.countryPicker.registerCarrierNumberEditText(binding.etPhone);
 
         binding.btnSendOtp.setOnClickListener(view1 -> {
-            if (binding.etPhone.getText().toString().trim().isEmpty()) {
-                Toast.makeText(this, "Please enter your phone number !", Toast.LENGTH_LONG).show();
-
-            } else if (binding.etPhone.getText().toString().trim().length() <10) {
-                Toast.makeText(this, "Please enter a valid phone number !", Toast.LENGTH_LONG).show();
-            } else {
-                sendOtp("+" + binding.countryPicker.getFullNumber().replace(" ",""));
-            }
+           if(verifyInputIsValid()){
+               sendOtp("+" + binding.countryPicker.getFullNumber().replace(" ",""));
+           }
         });
     }
 
+
+    private boolean verifyInputIsValid(){
+        if (binding.etPhone.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please enter your phone number !", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (binding.etPhone.getText().toString().trim().length() <10) {
+            Toast.makeText(this, "Please enter a valid phone number !", Toast.LENGTH_LONG).show();
+           return false;
+        }else{
+            return true;
+        }
+    }
       void sendOtp(String phoneNumber) {
+        showProgressBar();
+          PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+              @Override
+              public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
+                  hideProgressBar();
+              }
+              @Override
+              public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
+                  Toast.makeText(SendOtpActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                  hideProgressBar();
+              }
+              @Override
+              public void onCodeSent(@NonNull @NotNull String verificationId, @NonNull @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                  hideProgressBar();
+                  startIntent(verificationId);
+              }
+          };
+          setPhoneOptions(phoneNumber , mCallbacks);
+    }
+
+    private void showProgressBar() {
         binding.progressBar.setVisibility(View.VISIBLE);
         binding.btnSendOtp.setVisibility(View.GONE);
+    }
 
-        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private void hideProgressBar() {
+        binding.progressBar.setVisibility(View.GONE);
+        binding.btnSendOtp.setVisibility(View.VISIBLE);
+    }
 
-            @Override
-            public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
-                binding.progressBar.setVisibility(View.GONE);
-                binding.btnSendOtp.setVisibility(View.VISIBLE);
+    private void startIntent(String verificationId) {
+        Intent intent = new Intent(SendOtpActivity.this, VerifyOtpActivity.class);
+        intent.putExtra(CONSTANTS.PHONENUMBER, binding.etPhone.getText().toString());
+        intent.putExtra(CONSTANTS.FULLNUMBER, "+" + binding.countryPicker.getFullNumber().replace(" ", ""));
+        intent.putExtra(CONSTANTS.FIRSTNAME, binding.etFirstName.getText().toString());
+        intent.putExtra(CONSTANTS.SECONDNAME, binding.etSecondName.getText().toString());
+        intent.putExtra(CONSTANTS.VERIFYID, verificationId);
+        startActivity(intent);
+    }
 
-            }
 
-            @Override
-            public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
-                Toast.makeText(SendOtpActivity.this , e.getLocalizedMessage() , Toast.LENGTH_LONG).show();
-                binding.progressBar.setVisibility(View.GONE);
-                binding.btnSendOtp.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onCodeSent(@NonNull @NotNull String verificationId, @NonNull @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                Intent intent = new Intent(SendOtpActivity.this , VerifyOtpActivity.class);
-                intent.putExtra(CONSTANTS.PHONENUMBER , binding.etPhone.getText().toString());
-                intent.putExtra(CONSTANTS.FULLNUMBER,"+" + binding.countryPicker.getFullNumber().replace(" ",""));
-                intent.putExtra(CONSTANTS.FIRSTNAME,binding.fname.getText().toString());
-                intent.putExtra(CONSTANTS.SECONDNAME,binding.sname.getText().toString());
-                intent.putExtra(CONSTANTS.VERIFYID,verificationId);
-                binding.progressBar.setVisibility(View.GONE);
-                binding.btnSendOtp.setVisibility(View.VISIBLE);
-                startActivity(intent);
-            }
-        };
-
+    private void setPhoneOptions(String phoneNumber, PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(firebaseAuth)
                         .setPhoneNumber(phoneNumber)
@@ -96,9 +110,4 @@ public class SendOtpActivity extends AppCompatActivity {
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
-
-
-
-
-
 }

@@ -1,6 +1,6 @@
 package com.hamza.ieeechallenge.model;
 
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart;
 
 import java.util.List;
 

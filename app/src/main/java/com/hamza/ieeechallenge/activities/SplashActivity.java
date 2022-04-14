@@ -12,17 +12,21 @@ import com.google.firebase.auth.FirebaseUser;
 import com.hamza.ieeechallenge.R;
 
 public class SplashActivity extends AppCompatActivity {
+
     private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        firebaseAuth = FirebaseAuth.getInstance();
-
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(this::checkAuthState, 3000);
+        setFlag();
+        firebaseAuth = FirebaseAuth.getInstance();
+        new Handler().postDelayed(this::checkAuthState, 3500);
+    }
+
+    private void setFlag() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void checkAuthState() {

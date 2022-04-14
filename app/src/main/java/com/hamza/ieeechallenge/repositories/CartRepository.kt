@@ -1,8 +1,8 @@
 package com.hamza.ieeechallenge.repositories
 
 import androidx.lifecycle.LiveData
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.CartDao
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart
+import com.hamza.ieeechallenge.roomDatabase.CartDao
 
 class CartRepository(private val cartDao : CartDao) {
     val readAllData : LiveData<List<Cart>> = cartDao.readAllData()

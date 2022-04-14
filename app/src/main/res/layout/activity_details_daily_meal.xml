@@ -43,10 +43,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/detailde_rv"
             android:layout_width="match_parent"
-            tools:listitem="@layout/detailed_daily_meal_iitem"
             android:layout_height="wrap_content"/>
     </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_to_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/cart"
@@ -57,10 +57,9 @@
         app:layout_anchorGravity = "end|bottom"
         app:tint="@null"
         app:layout_anchor="@id/appBar"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
         android:clickable="true"
-
-        />
+        android:focusable="true" />
 
 
 

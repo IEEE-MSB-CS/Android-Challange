@@ -6,7 +6,6 @@ public class DailyMealModule {
     String description;
     String type;
 
-
     public DailyMealModule(int image, String name, String description , String type) {
         this.image = image;
         this.name = name;

@@ -5,71 +5,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SendOtpActivity">
+
+    <ImageView
+        android:id="@+id/illustration"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:src="@drawable/mail_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="120dp"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/illustration">
 
-
-
-    <EditText
-        android:id="@+id/fname"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="text" />
         <EditText
-            android:id="@+id/sname"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/et_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:ems="10"
+            android:textSize="14sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:fontFamily="@font/roboto_light"
+            android:background="@drawable/custom_input"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/custom_person_icon"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/et_second_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:fontFamily="@font/roboto_light"
+            android:background="@drawable/custom_input"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/custom_person_icon"
             android:hint="Second Name"
-            android:inputType="text" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/names">
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/country_picker"
-            android:layout_width="150dp"
-            app:ccp_defaultNameCode="US"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/custom_input"
+            app:ccp_defaultNameCode="US" />
 
         <EditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:ems="10"
+            android:textSize="14sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_input"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/custom_phone_icon"
             android:hint="Phone number"
             android:inputType="phone" />
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_send_otp"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
         android:text="Send OTP"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_light"
+        android:background="@drawable/btn_bg_design"
+        app:layout_constraintEnd_toEndOf="@id/linear_layout"
         app:layout_constraintStart_toStartOf="@id/linear_layout"
-        app:layout_constraintEnd_toEndOf="@id/linear_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -77,9 +117,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout"
+        app:layout_constraintEnd_toEndOf="@id/linear_layout"
         app:layout_constraintStart_toStartOf="@id/linear_layout"
-        app:layout_constraintEnd_toEndOf="@id/linear_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

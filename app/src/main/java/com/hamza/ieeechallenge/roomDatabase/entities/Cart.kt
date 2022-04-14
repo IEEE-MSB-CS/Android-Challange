@@ -1,4 +1,4 @@
-package com.hamza.ieeechallenge.roomDatabase.cartDatabase
+package com.hamza.ieeechallenge.roomDatabase.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

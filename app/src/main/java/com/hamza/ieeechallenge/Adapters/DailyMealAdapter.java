@@ -31,24 +31,16 @@ public class DailyMealAdapter extends RecyclerView.Adapter<DailyMealAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_meal_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_meal_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageDaily.setImageResource(dailyMealModuleList.get(position).getImage());
         holder.name.setText(dailyMealModuleList.get(position).getName());
-        holder.descrip.setText(dailyMealModuleList.get(position).getDescription());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailsDailyMealActivity.class);
-                intent.putExtra(CONSTANTS.TYPE,dailyMealModuleList.get(position).getType());
-                context.startActivity(intent);
-            }
-        });
+        holder.description.setText(dailyMealModuleList.get(position).getDescription());
 
-
+        holder.itemView.setOnClickListener(v -> openDetailsDailyMealActivity(position));
     }
 
     @Override
@@ -56,14 +48,20 @@ public class DailyMealAdapter extends RecyclerView.Adapter<DailyMealAdapter.View
         return dailyMealModuleList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageDaily;
-        TextView name, descrip;
+        TextView name, description;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageDaily = itemView.findViewById(R.id.image_item_daily_meal);
             name = itemView.findViewById(R.id.name_meal_daily);
-            descrip = itemView.findViewById(R.id.description);
+            description = itemView.findViewById(R.id.description);
         }
+    }
+
+    private void openDetailsDailyMealActivity(int position) {
+        Intent intent = new Intent(context, DetailsDailyMealActivity.class);
+        intent.putExtra(CONSTANTS.TYPE,dailyMealModuleList.get(position).getType());
+        context.startActivity(intent);
     }
 }

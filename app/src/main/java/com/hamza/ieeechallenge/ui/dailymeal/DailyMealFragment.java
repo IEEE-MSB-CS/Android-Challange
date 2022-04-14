@@ -12,36 +12,42 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hamza.ieeechallenge.Adapters.DailyMealAdapter;
 import com.hamza.ieeechallenge.R;
+import com.hamza.ieeechallenge.databinding.FragmentDailyMealBinding;
 import com.hamza.ieeechallenge.model.DailyMealModule;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DailyMeal extends Fragment {
-    RecyclerView rc;
+public class DailyMealFragment extends Fragment {
+    private FragmentDailyMealBinding binding;
     List<DailyMealModule> dailyMealModuleList;
     DailyMealAdapter dailyMealAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_daily_meal, container, false);
-        rc = root.findViewById(R.id.daily_meal_rc);
-        rc.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding = FragmentDailyMealBinding.inflate(getLayoutInflater() , container , false);
+        fillDailyMealList();
+        setDailyMealAdapter();
+
+        return binding.getRoot();
+    }
+
+    private void fillDailyMealList() {
         dailyMealModuleList = new ArrayList<>();
         dailyMealModuleList.add(new DailyMealModule(R.drawable.breakfast,"Breakfast","from 7 AM to 11 AM","Breakfast"));
         dailyMealModuleList.add(new DailyMealModule(R.drawable.dinner,"Dinner","from 4 PM to 7 PM","Dinner"));
         dailyMealModuleList.add(new DailyMealModule(R.drawable.launch,"Lunch","from 9 Pm to 12 AM","Lunch"));
         dailyMealModuleList.add(new DailyMealModule(R.drawable.sweets,"Sweets","Available all day","Sweets"));
-        dailyMealModuleList.add(new DailyMealModule(R.drawable.coffee,"Coffe","Available all day","Coffe"));
+        dailyMealModuleList.add(new DailyMealModule(R.drawable.coffee,"Coffee","Available all day","Coffee"));
 
+    }
+
+    private void setDailyMealAdapter() {
+        binding.dailyMealRc.setLayoutManager(new LinearLayoutManager(getContext()));
         dailyMealAdapter = new DailyMealAdapter(dailyMealModuleList,getContext());
-        rc.setAdapter(dailyMealAdapter);
+        binding.dailyMealRc.setAdapter(dailyMealAdapter);
         dailyMealAdapter.notifyDataSetChanged();
-
-
-        return root;
     }
 
-
-    }
+}

@@ -6,28 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".activities.VerifyOtpActivity">
 
+    <ImageView
+        android:id="@+id/illustration"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:src="@drawable/otp_verification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_verify_otp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:text="Verify OTP"
+        android:text="@string/otp_verification"
         android:textColor="@color/black"
         android:textSize="28sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/roboto_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/illustration" />
 
     <TextView
         android:id="@+id/tv_enter_otp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please enter your received OTP"
-        android:textColor="@color/gray"
+        android:text="@string/please_enter_your_received_otp"
+        android:fontFamily="@font/roboto_light"
+        android:textColor="@color/graymedium"
         android:textSize="18sp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/tv_verify_otp"
         app:layout_constraintStart_toStartOf="@id/tv_verify_otp"
         app:layout_constraintEnd_toEndOf="@id/tv_verify_otp"/>
@@ -36,9 +44,9 @@
         android:id="@+id/tv_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0777233426"
-        android:textColor="@color/gray"
-        android:layout_marginTop="12dp"
+        android:textColor="@color/graymedium"
+        android:fontFamily="@font/roboto_light"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/tv_enter_otp"
         app:layout_constraintStart_toStartOf="@id/tv_enter_otp"
         app:layout_constraintEnd_toEndOf="@id/tv_enter_otp"
@@ -63,16 +71,25 @@
             android:layout_height="55dp"
             android:ems="10"
             android:maxLength="1"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:inputType="phone"
-            android:textSize="20sp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/et_c2"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:ems="10"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:maxLength="1"
             android:inputType="phone"
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"
             android:textSize="20sp" />
 
         <EditText
@@ -81,7 +98,12 @@
             android:layout_height="55dp"
             android:ems="10"
             android:maxLength="1"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:inputType="phone"
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"
             android:textSize="20sp" />
 
         <EditText
@@ -89,8 +111,13 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:ems="10"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:maxLength="1"
             android:inputType="phone"
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"
             android:textSize="20sp" />
 
         <EditText
@@ -99,7 +126,12 @@
             android:layout_height="55dp"
             android:ems="10"
             android:maxLength="1"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:inputType="phone"
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"
             android:textSize="20sp" />
 
         <EditText
@@ -107,8 +139,13 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:ems="10"
+            android:paddingEnd="5dp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/roboto_light"
             android:maxLength="1"
             android:inputType="phone"
+            android:layout_margin="5dp"
+            android:background="@drawable/otp_input_background"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -126,13 +163,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Didn't get OTP ?"
-            android:textColor="@color/gray"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/graymedium"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/tv_resend_otp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RESEND OTP"
+            android:fontFamily="@font/roboto_light"
+            android:text="Resend code"
             android:textColor="@color/light_orange"
             android:layout_marginStart="8dp"
             android:textSize="18sp"/>
@@ -141,9 +180,12 @@
     <Button
         android:id="@+id/btn_verify"
         android:layout_width="204dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="Verify"
-        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_bg_design"
+        android:fontFamily="@font/roboto_light"
+        android:textAllCaps="false"
+        android:layout_marginTop="48dp"
         app:layout_constraintTop_toBottomOf="@id/linear_layout_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -9,11 +9,15 @@
         android:id="@+id/nav_home"
         android:name="com.hamza.ieeechallenge.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_mycart"
+            app:destination="@id/nav_mycart" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_daily_meal"
-        android:name="com.hamza.ieeechallenge.ui.dailymeal.DailyMeal"
+        android:name="com.hamza.ieeechallenge.ui.dailymeal.DailyMealFragment"
         android:label="@string/daily_meal"
         tools:layout="@layout/fragment_daily_meal" />
 
