@@ -1,10 +1,10 @@
 package com.hamza.ieeechallenge.ui.auth
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.telephony.TelephonyManager
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +18,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.hamza.ieeechallenge.data.model.CountryCallingCodes
 import com.hamza.ieeechallenge.data.repositories.UserRepository
 import com.hamza.ieeechallenge.data.repositories.UtilRepository
+import com.hamza.ieeechallenge.ui.HomeActivity
 import com.hamza.ieeechallenge.utils.Event
 import com.hamza.ieeechallenge.utils.Resource
 import com.hamza.ieeechallenge.utils.formatDialCode
@@ -31,11 +32,13 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(
+class AuthViewModel @SuppressLint("StaticFieldLeak")
+@Inject constructor(
     private val application: Application,
     private val utilRepository: UtilRepository,
-    private val userRepository: UserRepository
-) : ViewModel(){
+    private val userRepository: UserRepository,
+    ) : ViewModel() {
+
 
 
     private val firebaseAuth: FirebaseAuth by lazy {
@@ -46,7 +49,7 @@ class AuthViewModel @Inject constructor(
     val phoneNumber = MutableLiveData<String>()
 
     private val verificationIds = MutableLiveData<String>()
-    private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
+    var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
 
     private val _isAuthenticate = MutableLiveData<Boolean>()
     val isAuthenticate: LiveData<Boolean>
@@ -113,6 +116,7 @@ class AuthViewModel @Inject constructor(
 
     fun checkPhoneNumber() {
         number.value = "+${countryDialCode.value}${phoneNumber.value}"
+
         when {
             number.value!!.length < 11 -> {
                 _numberIsCorrect.value = false
@@ -123,19 +127,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-
-    fun sendVerificationCode(phoneNumber: String) {
-        Log.i("MYTAG", "sending verification code")
-
-        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-            .setPhoneNumber(phoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setCallbacks(mCallback)
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-
-    private val mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    val mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onCodeSent(
             verificationId: String,
@@ -162,6 +154,20 @@ class AuthViewModel @Inject constructor(
         }
 
     }
+
+    fun sendVerificationCode(phoneNumber: String) {
+        Log.i("MYTAG", "sending verification code")
+
+        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+                .setPhoneNumber(phoneNumber)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                //.setActivity()
+                .setCallbacks(mCallback)
+                .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+
 
     fun verifyCode(code: String) {
         try {
