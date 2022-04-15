@@ -3,8 +3,9 @@ package com.hamza.ieeechallenge.data.firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class FirebaseSourceUtil {
+class FirebaseSourceUtil @Inject constructor() {
     private val db: FirebaseFirestore by lazy {
         FirebaseFirestore.getInstance()
     }

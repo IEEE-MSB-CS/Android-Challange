@@ -13,8 +13,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class FirebaseSourceUser {
+class FirebaseSourceUser @Inject constructor(){
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }

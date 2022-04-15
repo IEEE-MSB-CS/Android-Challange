@@ -7,7 +7,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 
-class FirebaseSourceChat {
+class FirebaseSourceChat @Inject constructor(){
     private val db: FirebaseFirestore by lazy {
         FirebaseFirestore.getInstance()
     }

@@ -1,18 +1,30 @@
 package com.hamza.ieeechallenge.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.hamza.ieeechallenge.R
 import com.hamza.ieeechallenge.databinding.ActivityHomeBinding
+import com.hamza.ieeechallenge.ui.auth.AuthViewModel
 import com.hamza.ieeechallenge.ui.home.TabAdapter
 import com.hamza.ieeechallenge.ui.home.contact.ContactActivity
+import com.hamza.ieeechallenge.utils.Resource
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity @Inject constructor(): AppCompatActivity() {
 
     private lateinit var tabAdapter: TabAdapter
     private lateinit var tabLayout: TabLayout
@@ -32,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
         tabLayoutSettings()
         fabSettings()
+
     }
 
     private fun fabSettings() {
