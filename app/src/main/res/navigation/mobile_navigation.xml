@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -60,23 +60,5 @@
         android:label=""
         tools:layout="@layout/fragment_food_detail" />
 
-    <fragment
-        android:id="@+id/sendOtpFragment"
-        android:name="com.hamza.ieeechallenge.ui.sendotp.SendOtpFragment"
-        android:label=""
-        tools:layout="@layout/fragment_send_otp" >
-        <action
-            android:id="@+id/action_sendOtpFragment_to_verifyOtpFragment"
-            app:destination="@id/verifyOtpFragment" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/verifyOtpFragment"
-        android:name="com.hamza.ieeechallenge.ui.verifyotp.VerifyOtpFragment"
-        android:label=""
-        tools:layout="@layout/fragment_verify_otp" >
-        <action
-            android:id="@+id/action_verifyOtpFragment_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
 </navigation>

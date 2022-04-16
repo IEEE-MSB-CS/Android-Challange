@@ -1,14 +1,13 @@
-package com.hamza.ieeechallenge.ui.sendotp;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+package com.hamza.ieeechallenge.activities;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +16,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.databinding.FragmentSendOtpBinding;
+import com.hamza.ieeechallenge.databinding.ActivitySendOtpBinding;
 import com.hamza.ieeechallenge.model.CONSTANTS;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,17 +24,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class SendOtpFragment extends Fragment {
+public class SendOtpActivity extends AppCompatActivity {
 
-    private FragmentSendOtpBinding binding;
+    private ActivitySendOtpBinding binding;
     private FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-
     @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentSendOtpBinding.inflate(getLayoutInflater(), container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        binding = ActivitySendOtpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -46,16 +45,15 @@ public class SendOtpFragment extends Fragment {
                 sendOtp("+" + binding.countryPicker.getFullNumber().replace(" ",""));
             }
         });
-
-        return binding.getRoot();
     }
+
 
     private boolean verifyInputIsValid(){
         if (binding.etPhone.getText().toString().trim().isEmpty()) {
-            Toast.makeText(getContext(), "Please enter your phone number !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter your phone number !", Toast.LENGTH_LONG).show();
             return false;
         } else if (binding.etPhone.getText().toString().trim().length() <10) {
-            Toast.makeText(getContext(), "Please enter a valid phone number !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter a valid phone number !", Toast.LENGTH_LONG).show();
             return false;
         }else{
             return true;
@@ -70,7 +68,7 @@ public class SendOtpFragment extends Fragment {
             }
             @Override
             public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
-                Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SendOtpActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 hideProgressBar();
             }
             @Override
@@ -93,14 +91,13 @@ public class SendOtpFragment extends Fragment {
     }
 
     private void navigateToVerifyOtpFragment(String verificationId) {
-        Bundle bundle = new Bundle();
-        bundle.putString(CONSTANTS.PHONENUMBER, binding.etPhone.getText().toString());
-        bundle.putString(CONSTANTS.FULLNUMBER, "+" + binding.countryPicker.getFullNumber().replace(" ", ""));
-        bundle.putString(CONSTANTS.FIRSTNAME, binding.etFirstName.getText().toString());
-        bundle.putString(CONSTANTS.SECONDNAME, binding.etSecondName.getText().toString());
-        bundle.putString(CONSTANTS.VERIFYID, verificationId);
-
-        Navigation.findNavController(binding.getRoot()).navigate( R.id.action_sendOtpFragment_to_verifyOtpFragment, bundle);
+        Intent intent = new Intent(this , VerifyOtpActivity.class);
+        intent.putExtra(CONSTANTS.PHONENUMBER, binding.etPhone.getText().toString());
+        intent.putExtra(CONSTANTS.FULLNUMBER, "+" + binding.countryPicker.getFullNumber().replace(" ", ""));
+        intent.putExtra(CONSTANTS.FIRSTNAME, binding.etFirstName.getText().toString());
+        intent.putExtra(CONSTANTS.SECONDNAME, binding.etSecondName.getText().toString());
+        intent.putExtra(CONSTANTS.VERIFYID, verificationId);
+        startActivity(intent);
     }
 
 
@@ -109,7 +106,7 @@ public class SendOtpFragment extends Fragment {
                 PhoneAuthOptions.newBuilder(firebaseAuth)
                         .setPhoneNumber(phoneNumber)
                         .setTimeout(60L, TimeUnit.SECONDS)
-                        .setActivity(Objects.requireNonNull(getActivity()))
+                        .setActivity(this)
                         .setCallbacks(mCallbacks)
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);

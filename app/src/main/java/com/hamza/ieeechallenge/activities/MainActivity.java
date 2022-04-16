@@ -1,7 +1,6 @@
 package com.hamza.ieeechallenge.activities;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hamza.ieeechallenge.R;
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             showConfirmationDialog();
         });
 
-
     }
 
     private void disableNightMode() {
@@ -65,12 +64,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNavigation() {
-        navigationView = binding.navView;
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+                navigationView = binding.navView;
+                NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
+    private void checkAuthState() {
+
+    }
     private void setUserInfoOnDrawer() {
         findUserNameAndPhoneInNavigationView(navigationView);
         getUserInfoFromFirebase();
