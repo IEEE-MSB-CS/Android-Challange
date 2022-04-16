@@ -21,9 +21,11 @@ import com.hamza.ieeechallenge.ui.auth.AuthViewModel
 import com.hamza.ieeechallenge.ui.home.TabAdapter
 import com.hamza.ieeechallenge.ui.home.contact.ContactActivity
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeActivity @Inject constructor(): AppCompatActivity() {
 
     private lateinit var tabAdapter: TabAdapter

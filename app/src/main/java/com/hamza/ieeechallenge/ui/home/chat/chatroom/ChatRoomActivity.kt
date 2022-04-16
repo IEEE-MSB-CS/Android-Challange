@@ -10,7 +10,9 @@ import com.hamza.ieeechallenge.R
 import com.hamza.ieeechallenge.data.model.User
 import com.hamza.ieeechallenge.databinding.ActivityChatRoomBinding
 import com.hamza.ieeechallenge.ui.profile.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChatRoomActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatRoomBinding

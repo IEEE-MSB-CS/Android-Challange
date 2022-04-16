@@ -11,8 +11,9 @@ import androidx.lifecycle.Observer
 import com.hamza.ieeechallenge.R
 import com.hamza.ieeechallenge.databinding.FragmentChatTabBinding
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ChatTabFragment : Fragment() {
 
     private val conversationViewModel: ConversationViewModel by viewModels()
