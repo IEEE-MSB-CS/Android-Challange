@@ -1,30 +1,22 @@
-# Foody : Food delivery android application
+## Foody : Food delivery android application
 
-###### Foody is an android food delivary application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
+
+__Foody__ is an android food delivary application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
  
 
-# Architecture
-###### The architecture of this application relies and complies with the following points below:
-## A single-activity architecture, using the Navigation Components to manage fragment operations.
-## Pattern Model-View-ViewModel (MVVM) which facilitates a separation of development of the graphical user interface.
-## Android architecture components which help to keep the application robust, testable, and maintainable.
+### Architecture
+The architecture of this application relies and complies with the following points below:
+- __A single-activity architectur__, using the Navigation Components to manage fragment operations.
+- __Pattern Model-View-ViewModel (MVVM)__ which facilitates a separation of development of the graphical user interface.
+- __Android architecture components__ which help to keep the application robust, testable, and maintainable.
 
-# Built With
-## Kotlin & Java- 
-###### As a programming language.
-## Coroutines -
-###### For multithreading while handling requests to the server and local database.
-## Retrofit -
-###### A type-safe HTTP client for Android and Java.
-## LiveData - 
-###### notifies views of any database changes in an observer way.
-## ViewModel 
-###### to store and manage UI-related data in a lifecycle conscious way.
-## Room DB -
-###### To manage SQLite database easily and avoid a lot boilerplate code.
-## Glide - 
-###### It is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
-## View Binding 
-###### to declaratively bind UI components in layouts to data sources.
-## Material Design 
-###### an adaptable system of guidelines, components, and tools that support the best practices of user interface design. 
+### Built With
+- __Kotlin & Java-__ As a programming language.
+- __Coroutines-__ For multithreading while handling requests to the server and local database.
+- __Retrofit-__ A type-safe HTTP client for Android and Java.
+- __LiveData-__ notifies views of any database changes in an observer way.
+- __ViewModel-__ to store and manage UI-related data in a lifecycle conscious way.
+- __Room DB-__ To manage SQLite database easily and avoid a lot boilerplate code.
+- __Glide-__ It is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
+- __View Binding-__ to declaratively bind UI components in layouts to data sources.
+- __Material Design-__ an adaptable system of guidelines, components, and tools that support the best practices of user interface design. 
