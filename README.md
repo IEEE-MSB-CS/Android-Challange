@@ -32,7 +32,7 @@ The architecture of this application relies and complies with the following poin
 - __View Binding-__ to declaratively bind UI components in layouts to data sources.
 - __Material Design-__ an adaptable system of guidelines, components, and tools that support the best practices of user interface design. 
 
-# How To Install the Projrct
+# How to install the project
 Download the apk from release.
 
 # Contributors 
