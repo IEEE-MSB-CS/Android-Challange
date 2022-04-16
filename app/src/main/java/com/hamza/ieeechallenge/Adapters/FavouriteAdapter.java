@@ -2,6 +2,7 @@ package com.hamza.ieeechallenge.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.activities.FoodDetailActivity;
 import com.hamza.ieeechallenge.roomDatabase.entities.Favourite;
 import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 
@@ -27,11 +28,13 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     List<Favourite> favouriteList;
     Context context;
     FavouriteViewModel favouriteViewModel;
+    View view;
 
-    public FavouriteAdapter(List<Favourite> favouriteList, Context context, FavouriteViewModel favouriteViewModel) {
+    public FavouriteAdapter(List<Favourite> favouriteList, Context context, FavouriteViewModel favouriteViewModel , View view) {
         this.favouriteList = favouriteList;
         this.context = context;
         this.favouriteViewModel = favouriteViewModel;
+        this.view = view;
     }
 
     @NonNull
@@ -84,14 +87,15 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     }
 
     private void openFoodDetailActivity(int position) {
-        Intent intent = new Intent(context, FoodDetailActivity.class);
-        intent.putExtra("title",favouriteList.get(position).getTitle());
-        intent.putExtra("image",favouriteList.get(position).getImage());
-        intent.putExtra("price",favouriteList.get(position).getPrice());
-        intent.putExtra("rating",favouriteList.get(position).getRating());
-        intent.putExtra("restaurantName",favouriteList.get(position).getRestaurantName());
-        intent.putExtra("description",favouriteList.get(position).getDescription());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("title",favouriteList.get(position).getTitle());
+        bundle.putString("image",favouriteList.get(position).getImage());
+        bundle.putString("price",favouriteList.get(position).getPrice());
+        bundle.putDouble("rating",favouriteList.get(position).getRating());
+        bundle.putString("restaurantName",favouriteList.get(position).getRestaurantName());
+        bundle.putString("description",favouriteList.get(position).getDescription());
+
+        Navigation.findNavController(view).navigate(R.id.action_nav_favourite_to_foodlDetailFragment , bundle);
     }
 }

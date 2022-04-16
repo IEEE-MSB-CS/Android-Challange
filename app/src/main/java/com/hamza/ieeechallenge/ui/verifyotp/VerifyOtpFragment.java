@@ -1,55 +1,62 @@
-package com.hamza.ieeechallenge.activities;
+package com.hamza.ieeechallenge.ui.verifyotp;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.hamza.ieeechallenge.databinding.ActivityVerifyOtpBinding;
+import com.hamza.ieeechallenge.R;
+import com.hamza.ieeechallenge.activities.MainActivity;
+import com.hamza.ieeechallenge.databinding.FragmentVerifyOtpBinding;
 import com.hamza.ieeechallenge.model.CONSTANTS;
 import com.hamza.ieeechallenge.model.User;
 
-public class VerifyOtpActivity extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+public class VerifyOtpFragment extends Fragment {
 
     FirebaseUser firebaseUser;
-    private ActivityVerifyOtpBinding binding;
+    private FragmentVerifyOtpBinding binding;
     private String verificationId;
     private String fullNumber;
     private String firstName;
     private String secondName;
     private FirebaseAuth firebaseAuth;
     private String phoneNumber;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityVerifyOtpBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        binding = FragmentVerifyOtpBinding.inflate(getLayoutInflater(), container, false);
 
         editTextInput();
         getDataFromIntent();
 
-         firebaseAuth = FirebaseAuth.getInstance();
-         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
-         binding.tvPhoneNumber.setText(phoneNumber);
+        binding.tvPhoneNumber.setText(phoneNumber);
 
-         binding.tvResendOtp.setOnClickListener(view1 -> sendOtp(fullNumber));
-
-         binding.btnVerify.setOnClickListener(view12 -> {
+        binding.btnVerify.setOnClickListener(view12 -> {
             String code = getTextFromEditTexts();
             verifyBeforeSignIn(code);
-            });
+        });
+
+        return binding.getRoot();
     }
 
     private void editTextInput() {
@@ -136,15 +143,12 @@ public class VerifyOtpActivity extends AppCompatActivity {
     }
 
     private void getDataFromIntent() {
-        phoneNumber = getIntent().getStringExtra(CONSTANTS.PHONENUMBER);
-        fullNumber = getIntent().getStringExtra(CONSTANTS.FULLNUMBER);
-        firstName = getIntent().getStringExtra(CONSTANTS.FIRSTNAME);
-        secondName = getIntent().getStringExtra(CONSTANTS.SECONDNAME);
-        verificationId = getIntent().getStringExtra(CONSTANTS.VERIFYID);
-    }
-
-    private void sendOtp(String fullNumber) {
-
+        assert getArguments() != null;
+        phoneNumber = Objects.requireNonNull(getArguments()).getString(CONSTANTS.PHONENUMBER);
+        fullNumber = getArguments().getString(CONSTANTS.FULLNUMBER);
+        firstName = getArguments().getString(CONSTANTS.FIRSTNAME);
+        secondName = getArguments().getString(CONSTANTS.SECONDNAME);
+        verificationId = getArguments().getString(CONSTANTS.VERIFYID);
     }
 
     private void verifyBeforeSignIn(String code) {
@@ -163,7 +167,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
     private String getTextFromEditTexts() {
         if(verifyInputIsEmpty()){
-            Toast.makeText(this, "Please enter your OTP", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Please enter your OTP", Toast.LENGTH_LONG).show();
         }else {
             return binding.etC1.getText().toString() +
                     binding.etC2.getText().toString() +
@@ -196,13 +200,13 @@ public class VerifyOtpActivity extends AppCompatActivity {
                 openMainActivity();
             }else{
                 hideProgressBar();
-                Toast.makeText(VerifyOtpActivity.this, "OTP is not valid", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "OTP is not valid", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void openMainActivity() {
-        Intent intent = new Intent(VerifyOtpActivity.this , MainActivity.class );
+        Intent intent = new Intent(getContext() , MainActivity.class );
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK  | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
@@ -214,11 +218,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
     private void InsertUserInDatabase(User user) {
         FirebaseFirestore.getInstance().collection(CONSTANTS.COLLECTION_USER).document(user.getId())
-                .set(user).addOnSuccessListener(aVoid -> {
-                   Intent go = new Intent(VerifyOtpActivity.this, MainActivity.class);
-                   startActivity(go);
-                   finish();
-                }).addOnFailureListener(e -> Toast.makeText(VerifyOtpActivity.this, "" + e.getMessage(), Toast.LENGTH_LONG).show());
+                .set(user).addOnSuccessListener(aVoid -> Navigation.findNavController(binding.getRoot()).navigate(R.id.action_verifyOtpFragment_to_nav_home)).addOnFailureListener(e -> Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_LONG).show());
 
 
     }

@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
 
     @Override
     public void callback(int position, ArrayList<Food> list ) {
-        foodAdapter = new FoodAdapter(getContext(), list);
+        foodAdapter = new FoodAdapter(binding.getRoot(), list , getContext());
         foodAdapter.notifyDataSetChanged();
         binding.homeRecylerviewVertical.setAdapter(foodAdapter);
         binding.homeRecylerviewVertical.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.VERTICAL,false));

@@ -1,6 +1,6 @@
 package com.hamza.ieeechallenge.Adapters;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,24 +8,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.activities.DetailsDailyMealActivity;
 import com.hamza.ieeechallenge.model.CONSTANTS;
-import com.hamza.ieeechallenge.model.DailyMealModule;
+import com.hamza.ieeechallenge.model.DailyMeal;
 
 import java.util.List;
 
 public class DailyMealAdapter extends RecyclerView.Adapter<DailyMealAdapter.ViewHolder> {
 
-    List<DailyMealModule> dailyMealModuleList;
-    Context context;
+    List<DailyMeal> dailyMealList;
+    View view  ;
 
-    public DailyMealAdapter(List<DailyMealModule> dailyMealModuleList, Context context) {
-        this.dailyMealModuleList = dailyMealModuleList;
-        this.context = context;
+    public DailyMealAdapter(List<DailyMeal> dailyMealList, View view) {
+        this.dailyMealList = dailyMealList;
+        this.view = view;
     }
 
     @NonNull
@@ -36,16 +35,16 @@ public class DailyMealAdapter extends RecyclerView.Adapter<DailyMealAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageDaily.setImageResource(dailyMealModuleList.get(position).getImage());
-        holder.name.setText(dailyMealModuleList.get(position).getName());
-        holder.description.setText(dailyMealModuleList.get(position).getDescription());
+        holder.imageDaily.setImageResource(dailyMealList.get(position).getImage());
+        holder.name.setText(dailyMealList.get(position).getName());
+        holder.description.setText(dailyMealList.get(position).getDescription());
 
-        holder.itemView.setOnClickListener(v -> openDetailsDailyMealActivity(position));
+        holder.itemView.setOnClickListener(v -> navigateToDailyMealDetailFragment(position));
     }
 
     @Override
     public int getItemCount() {
-        return dailyMealModuleList.size();
+        return dailyMealList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,9 +58,10 @@ public class DailyMealAdapter extends RecyclerView.Adapter<DailyMealAdapter.View
         }
     }
 
-    private void openDetailsDailyMealActivity(int position) {
-        Intent intent = new Intent(context, DetailsDailyMealActivity.class);
-        intent.putExtra(CONSTANTS.TYPE,dailyMealModuleList.get(position).getType());
-        context.startActivity(intent);
+    private void navigateToDailyMealDetailFragment(int position) {
+        final Bundle bundle = new Bundle();
+        bundle.putString(CONSTANTS.TYPE, dailyMealList.get(position).getType());
+        Navigation.findNavController(view).navigate(R.id.action_nav_daily_meal_to_dailyMealDetailFragment , bundle);
+
     }
 }

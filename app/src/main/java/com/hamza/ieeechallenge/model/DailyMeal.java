@@ -1,19 +1,19 @@
 package com.hamza.ieeechallenge.model;
 
-public class DailyMealModule {
+public class DailyMeal {
     int image ;
     String name;
     String description;
     String type;
 
-    public DailyMealModule(int image, String name, String description , String type) {
+    public DailyMeal(int image, String name, String description , String type) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.type = type;
     }
 
-    public DailyMealModule() {
+    public DailyMeal() {
     }
 
     public String getType() {

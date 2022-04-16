@@ -1,15 +1,17 @@
-package com.hamza.ieeechallenge.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.hamza.ieeechallenge.ui.splah;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hamza.ieeechallenge.R;
+import com.hamza.ieeechallenge.activities.MainActivity;
+import com.hamza.ieeechallenge.ui.sendotp.SendOtpFragment;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -33,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         FirebaseAuth.AuthStateListener authStateListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             if(user == null){
-                startActivity(new Intent(SplashActivity.this , SendOtpActivity.class));
+                startActivity(new Intent(SplashActivity.this , SendOtpFragment.class));
             }else{
                 startActivity(new Intent(SplashActivity.this , MainActivity.class));
             }

@@ -1,6 +1,6 @@
 package com.hamza.ieeechallenge.model;
 
-public class DailyMealDetialed {
+public class DailyMealDetail {
     String Image;
     String name;
     String restaurant;
@@ -8,10 +8,10 @@ public class DailyMealDetialed {
     String type;
 
 
-    public DailyMealDetialed() {
+    public DailyMealDetail() {
     }
 
-    public DailyMealDetialed(String image, String name, String restaurant, String price) {
+    public DailyMealDetail(String image, String name, String restaurant, String price) {
         Image = image;
         this.name = name;
         this.restaurant = restaurant;

@@ -1,7 +1,7 @@
 package com.hamza.ieeechallenge.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.activities.FoodDetailActivity;
 import com.hamza.ieeechallenge.model.Food;
 import com.hamza.ieeechallenge.roomDatabase.entities.Favourite;
 import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
@@ -26,14 +26,16 @@ import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
+    View view;
     Context context;
     ArrayList<Food> foodList;
     FavouriteViewModel favouriteViewModel;
     LifecycleOwner lifecycleOwner;
 
-    public FoodAdapter(Context context, ArrayList<Food> foodList ) {
-        this.context = context;
+    public FoodAdapter(View view, ArrayList<Food> foodList , Context context ) {
+        this.view = view;
         this.foodList = foodList;
+        this.context = context;
     }
 
     @NonNull
@@ -54,7 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
        favouriteViewModel.isFavourite(foodList.get(position).getTitle()).observe(lifecycleOwner, (Observer<String>) s ->
                updateFavouriteIconStatus(s , holder));
 
-        holder.image.setOnClickListener(view -> openFoodDetailActivity(position));
+        holder.image.setOnClickListener(view -> navigateToFoodDetailFragment(position));
 
         holder.favourite.setOnClickListener(view ->
                 updateFavouriteItemIconByFavouriteText(holder , position));
@@ -113,16 +115,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.isFavourite.setText("1");
     }
 
-    private void openFoodDetailActivity(int position) {
-        Intent intent = new Intent(context, FoodDetailActivity.class);
-        intent.putExtra("title",foodList.get(position).getTitle());
-        intent.putExtra("image",foodList.get(position).getImage());
-        intent.putExtra("price",foodList.get(position).getPrice());
-        intent.putExtra("rating",foodList.get(position).getRating());
-        intent.putExtra("restaurantName",foodList.get(position).getRestaurant());
-        intent.putExtra("description",foodList.get(position).getDescription());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+    private void navigateToFoodDetailFragment(int position) {
+        final Bundle bundle = new Bundle();
+        bundle.putString("title",foodList.get(position).getTitle());
+        bundle.putString("image",foodList.get(position).getImage());
+        bundle.putString("price",foodList.get(position).getPrice());
+        bundle.putDouble("rating",foodList.get(position).getRating());
+        bundle.putString("restaurantName",foodList.get(position).getRestaurant());
+        bundle.putString("description",foodList.get(position).getDescription());
+
+        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_foodlDetailFragment , bundle);
+
     }
 
     private void deleteFavouriteItemFromDatabase(int position) {

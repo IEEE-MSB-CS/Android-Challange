@@ -13,15 +13,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.model.DailyMealDetialed;
+import com.hamza.ieeechallenge.model.DailyMealDetail;
 
 import java.util.List;
 
 public class DetailedDailyMealAdapter extends RecyclerView.Adapter<DetailedDailyMealAdapter.ViewHolder> {
 
-    List<DailyMealDetialed> dailyMealDetailedList;
+    List<DailyMealDetail> dailyMealDetailedList;
     Context context;
-    public DetailedDailyMealAdapter(List<DailyMealDetialed> dailyMealDetailedList , Context context) {
+    public DetailedDailyMealAdapter(List<DailyMealDetail> dailyMealDetailedList , Context context) {
         this.dailyMealDetailedList = dailyMealDetailedList;
         this.context = context;
     }
@@ -59,7 +59,7 @@ public class DetailedDailyMealAdapter extends RecyclerView.Adapter<DetailedDaily
         }
     }
 
-    public List<DailyMealDetialed> getDailyMealList(){
+    public List<DailyMealDetail> getDailyMealList(){
         return dailyMealDetailedList;
     }
 }

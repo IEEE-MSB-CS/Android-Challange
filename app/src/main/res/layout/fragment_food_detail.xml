@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fooddetail.FoodDetailFragment">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_food"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"  />
+
+        <LinearLayout
+            android:id="@+id/count_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_food"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/btn_bg_design"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageButton
+                android:id="@+id/btn_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_baseline_add_24"/>
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_light"
+                android:textSize="24sp"
+                android:text="1"/>
+            <ImageButton
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_outline_minimize_24"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BEEF BURGER"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@id/count_layout"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_restaurant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurant name"
+            android:layout_marginStart="8dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/graymedium"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30 $"
+            android:layout_marginTop="12dp"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/count_layout"/>
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.2"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/light_orange"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_restaurant_name"/>
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="242dp"
+            android:layout_height="43dp"
+            android:isIndicator="true"
+            android:rating="4.2"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/tv_rating"
+            app:layout_constraintTop_toBottomOf="@id/tv_restaurant_name"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="421dp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_rating"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="Ramen burger is a unique variety of a hamburger consisting of a meat patty that is sandwiched between two fried ramen noodle buns. The meat patty is typically slathered in shoyu sauce and topped with arugula and scallions. The dish was created by Keizo Shimamoto, a ramen blogger, who debuted it in 2013 in Brooklyn.The ramen burger was so popular that it had been voted by Time Magazine as one of the 17 most influential burgers ever created."
+                android:layout_marginStart="8dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/graymedium"/>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Add to cart "
+            android:background="@drawable/btn_bg_design"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

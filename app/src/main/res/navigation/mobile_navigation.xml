@@ -13,23 +13,70 @@
         <action
             android:id="@+id/action_nav_home_to_nav_mycart"
             app:destination="@id/nav_mycart" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_favourite"
+            app:destination="@id/nav_favourite" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_daily_meal"
+            app:destination="@id/nav_daily_meal" />
+        <action
+            android:id="@+id/action_nav_home_to_foodlDetailFragment"
+            app:destination="@id/foodlDetailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_daily_meal"
         android:name="com.hamza.ieeechallenge.ui.dailymeal.DailyMealFragment"
         android:label="@string/daily_meal"
-        tools:layout="@layout/fragment_daily_meal" />
+        tools:layout="@layout/fragment_daily_meal" >
+        <action
+            android:id="@+id/action_nav_daily_meal_to_dailyMealDetailFragment"
+            app:destination="@id/dailyMealDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_favourite"
         android:name="com.hamza.ieeechallenge.ui.Favourite.FavouriteFragment"
         android:label="@string/favourites"
-        tools:layout="@layout/fragment_favourit" />
+        tools:layout="@layout/fragment_favourit" >
+        <action
+            android:id="@+id/action_nav_favourite_to_foodlDetailFragment"
+            app:destination="@id/foodlDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_mycart"
         android:name="com.hamza.ieeechallenge.ui.cart.MyCartFragment"
         android:label="@string/myCart"
         tools:layout="@layout/fragment_my_cart" />
+    <fragment
+        android:id="@+id/dailyMealDetailFragment"
+        android:name="com.hamza.ieeechallenge.ui.dailymealdetail.DailyMealDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_daily_meal_detail" />
 
+    <fragment
+        android:id="@+id/foodlDetailFragment"
+        android:name="com.hamza.ieeechallenge.ui.fooddetail.FoodDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_food_detail" />
+
+    <fragment
+        android:id="@+id/sendOtpFragment"
+        android:name="com.hamza.ieeechallenge.ui.sendotp.SendOtpFragment"
+        android:label=""
+        tools:layout="@layout/fragment_send_otp" >
+        <action
+            android:id="@+id/action_sendOtpFragment_to_verifyOtpFragment"
+            app:destination="@id/verifyOtpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verifyOtpFragment"
+        android:name="com.hamza.ieeechallenge.ui.verifyotp.VerifyOtpFragment"
+        android:label=""
+        tools:layout="@layout/fragment_verify_otp" >
+        <action
+            android:id="@+id/action_verifyOtpFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

@@ -34,7 +34,7 @@ public class FavouriteFragment extends Fragment {
     }
 
     private void setFavouritesAdapter(List<Favourite> favourites, FavouriteViewModel favouriteViewModel) {
-        FavouriteAdapter adapter = new FavouriteAdapter(favourites , getContext() , favouriteViewModel);
+        FavouriteAdapter adapter = new FavouriteAdapter(favourites , getContext() , favouriteViewModel , binding.getRoot());
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity() , 2));
     }
