@@ -32,7 +32,7 @@ class PhoneVerifyFragment : Fragment() {
 
         val arguments = PhoneVerifyFragmentArgs.fromBundle(requireArguments())
 
-        viewModel.sendVerificationCode(arguments.phoneNumber)
+        viewModel.sendVerificationCode(arguments.phoneNumber, requireActivity())
 
         binding.btNext.setOnClickListener {
             val cek = binding.etVerificationCode.text.toString()

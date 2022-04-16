@@ -1,6 +1,7 @@
 package com.hamza.ieeechallenge.ui.auth
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.telephony.TelephonyManager
@@ -155,13 +156,13 @@ class AuthViewModel @SuppressLint("StaticFieldLeak")
 
     }
 
-    fun sendVerificationCode(phoneNumber: String) {
+    fun sendVerificationCode(phoneNumber: String , activity: Activity) {
         Log.i("MYTAG", "sending verification code")
 
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
                 .setPhoneNumber(phoneNumber)
                 .setTimeout(60L, TimeUnit.SECONDS)
-                //.setActivity()
+                .setActivity(activity)
                 .setCallbacks(mCallback)
                 .build()
         PhoneAuthProvider.verifyPhoneNumber(options)

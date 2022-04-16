@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.welcome.SplashFragment">
+
     <ImageView
         android:id="@+id/whatsappLogo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/whatsapp_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/whatsapp_logo"
+        android:src="@drawable/whatsapp_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -14,7 +14,9 @@ import com.hamza.ieeechallenge.databinding.FragmentSelectCountryBinding
 import com.hamza.ieeechallenge.ui.auth.AuthViewModel
 import com.hamza.ieeechallenge.utils.Resource
 import com.hamza.ieeechallenge.utils.formatDialCode
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelectCountryFragment : Fragment() {
 
     private val authViewModel: AuthViewModel by activityViewModels()

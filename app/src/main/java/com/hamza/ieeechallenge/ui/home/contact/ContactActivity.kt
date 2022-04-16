@@ -12,7 +12,9 @@ import com.hamza.ieeechallenge.databinding.ActivityContactBinding
 import com.hamza.ieeechallenge.ui.home.chat.chatroom.ChatRoomActivity
 import com.hamza.ieeechallenge.ui.profile.UserViewModel
 import com.hamza.ieeechallenge.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContactActivity : AppCompatActivity() {
 
     private val viewModel: UserViewModel by viewModels()
