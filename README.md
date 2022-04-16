@@ -9,8 +9,9 @@ The architecture of this application relies and complies with the following poin
 - __A single-activity architectur__, using the Navigation Components to manage fragment operations.
 - __Pattern Model-View-ViewModel (MVVM)__ which facilitates a separation of development of the graphical user interface.
 - __Android architecture components__ which help to keep the application robust, testable, and maintainable.
+![Alt text](https://user.oc-static.com/upload/2021/12/06/16387959038246_image34.png)
 
-### Built With
+### Technologies used
 - __Kotlin & Java-__ As a programming language.
 - __Coroutines-__ For multithreading while handling requests to the server and local database.
 - __Retrofit-__ A type-safe HTTP client for Android and Java.
