@@ -13,20 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.hamza.ieeechallenge.Adapters.FoodCategoryAdapter;
 import com.hamza.ieeechallenge.Adapters.FoodAdapter;
+import com.hamza.ieeechallenge.Adapters.FoodCategoryAdapter;
 import com.hamza.ieeechallenge.Adapters.UpdateFoodRC;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.activities.LastOrderActivity;
 import com.hamza.ieeechallenge.databinding.FragmentHomeBinding;
-import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.Food;
+import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.JSONResponse;
 import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
+import com.hamza.ieeechallenge.ui.cart.MyCartFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -40,28 +40,35 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment implements UpdateFoodRC {
-    private FragmentHomeBinding binding;
 
-  ArrayList<FoodCategory> foodCategoryList;
-  ArrayList<Food> foodList;
-  FoodCategoryAdapter foodCategoryAdapter;
-  FoodAdapter foodAdapter;
+    private FragmentHomeBinding binding;
+    ArrayList<FoodCategory> foodCategoryList;
+    FoodCategoryAdapter foodCategoryAdapter;
+    FoodAdapter foodAdapter;
     ArrayList<Food> pizzaList ;
     ArrayList<Food> ice_creamList ;
     ArrayList<Food> burgerList ;
     ArrayList<Food> saladList ;
     ArrayList<Food> sandwichList;
-    SearchView searchView;
-  //https://run.mocky.io/v3/42febb3a-e4cb-4b7c-9cac-bd98299bbd7c
-    FirebaseFirestore firebaseFirestore;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         setHasOptionsMenu(true);
-
         binding = FragmentHomeBinding.inflate(getLayoutInflater(), container, false);
-        binding.fab.setOnClickListener(view -> {
 
-        });
+        showProgressBar();
+
+        getDataFromRetrofit();
+
+        return binding.getRoot();
+    }
+
+    private void showProgressBar() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void getDataFromRetrofit() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://run.mocky.io/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -75,28 +82,11 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
                     JSONResponse jsonResponse;
                     jsonResponse = response.body();
                     assert jsonResponse != null;
-                    pizzaList = new ArrayList<>(Arrays.asList(jsonResponse.getPizza()));
-                    ice_creamList = new ArrayList<>(Arrays.asList(jsonResponse.getIce_cream()));
-                    burgerList = new ArrayList<>(Arrays.asList(jsonResponse.getBurger()));
-                    saladList = new ArrayList<>(Arrays.asList(jsonResponse.getSalad()));
-                    sandwichList = new ArrayList<>(Arrays.asList(jsonResponse.getSandwich()));
-
-                    //Horizontal recyclerview
-                    foodCategoryList = new ArrayList<>();
-                    foodCategoryList.add(new FoodCategory(R.drawable.salad, "Salad"));
-                    foodCategoryList.add(new FoodCategory(R.drawable.pizza, "Pizza"));
-                    foodCategoryList.add(new FoodCategory(R.drawable.hamburger, "Burger"));
-                    foodCategoryList.add(new FoodCategory(R.drawable.icecream, "Ice Cream"));
-                    foodCategoryList.add(new FoodCategory(R.drawable.sandwich22, "Sandwich"));
-
-                    foodCategoryAdapter =  new FoodCategoryAdapter(HomeFragment.this,getActivity(), foodCategoryList,pizzaList,ice_creamList,burgerList,saladList,sandwichList);
-                    binding.homeRecylerview.setAdapter(foodCategoryAdapter);
-
-                    binding.homeRecylerview.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL,false));
-                    binding.homeRecylerview.setHasFixedSize(true);
-                    binding.homeRecylerview.setNestedScrollingEnabled(false);
+                    fillFoodLists(jsonResponse);
+                    fillCategoryList();
+                    setRecyclerView();
+                    hideProgressBar();
                 }
-
             }
 
             @Override
@@ -104,31 +94,50 @@ public class HomeFragment extends Fragment implements UpdateFoodRC {
 
             }
         });
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go =  new Intent(getContext(), LastOrderActivity.class);
-                startActivity(go);
-            }
-        });
+    }
 
+    private void hideProgressBar() {
+        binding.progressBar.setVisibility(View.GONE);
+    }
 
+    private void setRecyclerView() {
+        foodCategoryAdapter =  new FoodCategoryAdapter(HomeFragment.this,getActivity(), foodCategoryList,pizzaList,ice_creamList,burgerList,saladList,sandwichList);
+        binding.homeRecylerview.setAdapter(foodCategoryAdapter);
 
-
-        return binding.getRoot();
+        binding.homeRecylerview.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL,false));
+        binding.homeRecylerview.setHasFixedSize(true);
+        binding.homeRecylerview.setNestedScrollingEnabled(false);
 
     }
 
+    private void fillCategoryList() {
+        foodCategoryList = new ArrayList<>();
+        foodCategoryList.add(new FoodCategory(R.drawable.salad, "Salad"));
+        foodCategoryList.add(new FoodCategory(R.drawable.pizza, "Pizza"));
+        foodCategoryList.add(new FoodCategory(R.drawable.hamburger, "Burger"));
+        foodCategoryList.add(new FoodCategory(R.drawable.icecream, "Ice Cream"));
+        foodCategoryList.add(new FoodCategory(R.drawable.sandwich22, "Sandwich"));
+
+    }
+
+    private void fillFoodLists(JSONResponse jsonResponse) {
+        pizzaList = new ArrayList<>(Arrays.asList(jsonResponse.getPizza()));
+        ice_creamList = new ArrayList<>(Arrays.asList(jsonResponse.getIce_cream()));
+        burgerList = new ArrayList<>(Arrays.asList(jsonResponse.getBurger()));
+        saladList = new ArrayList<>(Arrays.asList(jsonResponse.getSalad()));
+        sandwichList = new ArrayList<>(Arrays.asList(jsonResponse.getSandwich()));
+
+    }
 
     @Override
     public void callback(int position, ArrayList<Food> list ) {
-        foodAdapter = new FoodAdapter(getContext(), list);
+        foodAdapter = new FoodAdapter(binding.getRoot(), list , getContext());
         foodAdapter.notifyDataSetChanged();
         binding.homeRecylerviewVertical.setAdapter(foodAdapter);
         binding.homeRecylerviewVertical.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.VERTICAL,false));
 
         FavouriteViewModel favouriteViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
-        foodAdapter.setData(favouriteViewModel);
+        foodAdapter.setData(favouriteViewModel , getViewLifecycleOwner());
     }
 
     @Override

@@ -14,19 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hamza.ieeechallenge.R;
 import com.hamza.ieeechallenge.model.FoodCategory;
 import com.hamza.ieeechallenge.model.Food;
-import com.hamza.ieeechallenge.roomDatabase.Favourite;
-import com.hamza.ieeechallenge.ui.Favourite.FavouriteViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapter.ViewHolder> {
 
     UpdateFoodRC updateFoodRC;
     Activity activity;
     ArrayList<FoodCategory> foodCategoryList;
-    boolean check = true;
-    boolean select = true;
+    boolean checked = true;
+    boolean selected = true;
     int row_index = -1;
     ArrayList<Food> pizzaList ;
     ArrayList<Food> ice_creamList ;
@@ -48,7 +45,7 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.food_rv_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_rv_item, parent, false));
     }
 
     @Override
@@ -56,45 +53,10 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
         holder.imageView.setImageResource(foodCategoryList.get(position).getImage());
         holder.name.setText(foodCategoryList.get(position).getName());
 
-        if (check) {
-          updateFoodRC.callback(position, saladList);
-            check = false;
-        }
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                row_index = position;
-                notifyDataSetChanged();
-                if (position == 0) {
-                    updateFoodRC.callback(position, saladList);
-                } else if (position == 1) {
-                    updateFoodRC.callback(position, pizzaList);
-                } else if (position == 2) {
-                    updateFoodRC.callback(position, burgerList);
-                } else if (position == 3) {
-                    updateFoodRC.callback(position, ice_creamList);
-                } else if (position == 4) {
-                    updateFoodRC.callback(position, sandwichList);
-                }
-            }
-        });
+        loadListsIntoFoodRecyclerView(holder , position);
 
-
-        if (select) {
-            if (position == 0) {
-                holder.cardView.setBackgroundResource(R.drawable.chaneg_bg);
-                select=false;
-            }
-        } else {
-            if (row_index == position) {
-                holder.cardView.setBackgroundResource(R.drawable.chaneg_bg);
-            } else {
-                holder.cardView.setBackgroundResource(R.drawable.default_bg);
-
-            }
-        }
+        updateColors(holder , position);
     }
-
 
 
     @Override
@@ -114,5 +76,41 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
         }
     }
 
+    private void loadListsIntoFoodRecyclerView(ViewHolder holder, int position) {
+        if (checked) {
+            updateFoodRC.callback(position, saladList);
+            checked = false;
+        }
+        holder.cardView.setOnClickListener(v -> {
+            row_index = position;
+            notifyDataSetChanged();
+            if (position == 0) {
+                updateFoodRC.callback(position, saladList);
+            } else if (position == 1) {
+                updateFoodRC.callback(position, pizzaList);
+            } else if (position == 2) {
+                updateFoodRC.callback(position, burgerList);
+            } else if (position == 3) {
+                updateFoodRC.callback(position, ice_creamList);
+            } else if (position == 4) {
+                updateFoodRC.callback(position, sandwichList);
+            }
+        });
+    }
 
+    private void updateColors(ViewHolder holder, int position) {
+        if (selected) {
+            if (position == 0) {
+                holder.cardView.setBackgroundResource(R.drawable.chaneg_bg);
+                selected =false;
+            }
+        } else {
+            if (row_index == position) {
+                holder.cardView.setBackgroundResource(R.drawable.chaneg_bg);
+            } else {
+                holder.cardView.setBackgroundResource(R.drawable.default_bg);
+
+            }
+        }
+    }
 }

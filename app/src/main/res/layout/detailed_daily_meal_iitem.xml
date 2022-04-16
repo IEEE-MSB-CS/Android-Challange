@@ -27,7 +27,7 @@
                 android:id="@+id/detailed_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/amarante"
+                android:fontFamily="@font/roboto_light"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text="Name"
@@ -39,7 +39,7 @@
                 android:id="@+id/detailed_des"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/amarante"
+                android:fontFamily="@font/roboto_light"
                 android:text="Description"
                 android:ellipsize="end"
                 android:maxLines="2"
@@ -51,18 +51,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="4dp">
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_baseline_attach_money_24"
-                    android:layout_marginTop="2dp"
-                    />
+
                 <TextView
                     android:id="@+id/price_daily_meal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10 $"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/roboto_light"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
 

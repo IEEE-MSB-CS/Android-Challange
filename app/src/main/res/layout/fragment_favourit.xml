@@ -7,28 +7,49 @@
     android:layout_gravity="center_horizontal"
     tools:context=".ui.Favourite.FavouriteFragment">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Favourite Food"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="30sp"
-
-        android:textColor="@color/black"
-        android:fontFamily="@font/amarante"
-        android:layout_marginStart="10dp"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:id="@+id/illustration"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:visibility="gone"
+        android:src="@drawable/empty_page"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/tv_nothing_to_see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nothing_to_see_here"
+        android:fontFamily="@font/roboto_light"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/illustration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/tv_add_items"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:fontFamily="@font/roboto_light"
+        android:text="@string/your_favourite_list_is_empty_add_your_favourite_food_so_you_can_find_it_here"
+        android:textColor="@color/graymedium"
+        android:textSize="14sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_nothing_to_see"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

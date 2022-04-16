@@ -15,16 +15,18 @@ import com.bumptech.glide.Glide;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.hamza.ieeechallenge.R;
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart;
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart;
 import com.hamza.ieeechallenge.ui.cart.CartViewModel;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
+
     List<Cart> cartList;
     Context context;
     CartViewModel cartViewModel;
     final ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
+
     public CartAdapter( Context context) {
         this.context = context;
     }
@@ -37,37 +39,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        setViewBinderHelper(holder , position);
+
+        setDataToRecyclerView(holder , position);
+
+        holder.minus.setOnClickListener(view -> decreaseQuantity(holder , position));
+
+        holder.plus.setOnClickListener(view -> increaseQuantity(holder , position));
+
+        holder.delete.setOnClickListener(view-> deleteCartItem(position));
+
+    }
+
+    private void setViewBinderHelper(ViewHolder holder, int position) {
         viewBinderHelper.setOpenOnlyOne(true);
         viewBinderHelper.bind(holder.swipeRevealLayout , String.valueOf(cartList.get(position).getOrderId()));
         viewBinderHelper.closeLayout(String.valueOf(cartList.get(position).getOrderId()));
-
-        Glide.with(context)
-                .load(cartList.get(position).getImage())
-                .into(holder.imageView);
-        holder.name.setText(cartList.get(position).getTitle());
-        holder.price.setText(String.valueOf(cartList.get(position).getPrice()));
-        holder.restaurantName.setText(cartList.get(position).getRestaurantName());
-        holder.quantity.setText(String.valueOf(cartList.get(position).getQuantity()));
-
-        holder.minus.setOnClickListener(view -> {
-            int quantity = Integer.parseInt(holder.quantity.getText().toString());
-            if (quantity>1){
-                quantity--;
-                holder.quantity.setText(String.valueOf(quantity));
-                updateCartItem(position , quantity);
-            }
-        });
-        holder.plus.setOnClickListener(view -> {
-            int quantity = Integer.parseInt(holder.quantity.getText().toString());
-            quantity++;
-            holder.quantity.setText(String.valueOf(quantity));
-            updateCartItem(position , quantity);
-        });
-
-        holder.delete.setOnClickListener(view->{
-            deleteCartItem(position);
-        });
-
     }
 
     @Override
@@ -112,5 +100,36 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 cartList.get(position).getRestaurantName() , cartList.get(position).getQuantity() ,
                 cartList.get(position).getPrice());
         cartViewModel.deleteCartItem(cart);
+    }
+
+
+    private void setDataToRecyclerView(ViewHolder holder, int position) {
+        Glide.with(context)
+                .load(cartList.get(position).getImage())
+                .into(holder.imageView);
+        holder.name.setText(cartList.get(position).getTitle());
+        holder.price.setText(String.valueOf(cartList.get(position).getPrice()));
+        holder.restaurantName.setText(cartList.get(position).getRestaurantName());
+        holder.quantity.setText(String.valueOf(cartList.get(position).getQuantity()));
+    }
+
+    private void decreaseQuantity(ViewHolder holder, int position) {
+        int quantity = Integer.parseInt(holder.quantity.getText().toString());
+        if (quantity>1){
+            quantity--;
+            holder.quantity.setText(String.valueOf(quantity));
+            updateCartItem(position , quantity);
+        }
+    }
+
+    private void increaseQuantity(ViewHolder holder, int position) {
+        int quantity = Integer.parseInt(holder.quantity.getText().toString());
+        quantity++;
+        holder.quantity.setText(String.valueOf(quantity));
+        updateCartItem(position , quantity);
+    }
+
+    public List<Cart> getCartList(){
+        return cartList;
     }
 }

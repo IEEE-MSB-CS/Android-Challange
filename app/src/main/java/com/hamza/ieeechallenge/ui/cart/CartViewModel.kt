@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.hamza.ieeechallenge.repositories.CartRepository
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.Cart
-import com.hamza.ieeechallenge.roomDatabase.cartDatabase.MyDatabase
+import com.hamza.ieeechallenge.roomDatabase.entities.Cart
+import com.hamza.ieeechallenge.roomDatabase.MyDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

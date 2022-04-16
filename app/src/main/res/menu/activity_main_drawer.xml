@@ -7,18 +7,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
+            android:fontFamily="@font/roboto_light"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_daily_meal"
             android:icon="@drawable/ic_baseline_all_inclusive_24"
+            android:fontFamily="@font/roboto_light"
             android:title="@string/daily_meal" />
         <item
             android:id="@+id/nav_favourite"
             android:icon="@drawable/ic_baseline_favorite_24"
+            android:fontFamily="@font/roboto_light"
             android:title="@string/favourites" />
         <item
             android:id="@+id/nav_mycart"
             android:icon="@drawable/cart"
+            android:fontFamily="@font/roboto_light"
             android:title="@string/myCart" />
 
 
