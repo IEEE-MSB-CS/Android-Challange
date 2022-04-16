@@ -3,6 +3,7 @@
 
 __Foody__ is an android food delivery application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
  
+ ![Google Pixel 4 XL (4)](https://user-images.githubusercontent.com/87112510/163689862-ef6c3c94-bb4c-49a6-bc5c-1362184289fa.png)
 ![1650138230154](https://user-images.githubusercontent.com/87112510/163689627-cca4ef79-20b1-4823-b4b5-7bc6faa775b0.png)
 ![1650138230143](https://user-images.githubusercontent.com/87112510/163689596-1c1bf0ca-6704-4113-98c8-c0914816c305.png)
  ![1650138230118](https://user-images.githubusercontent.com/87112510/163689586-f35a8b03-ee1e-4893-97c5-425cc9824ad5.png)
