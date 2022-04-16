@@ -1,7 +1,7 @@
 ## Foody : Food delivery android application
 
 
-__Foody__ is an android food delivary application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
+__Foody__ is an android food delivery application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
  
 
 ### Architecture
