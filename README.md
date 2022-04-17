@@ -2,16 +2,21 @@
 
 
 __Foody__ is an android food delivery application with friendly user interface, implemented using the MVVM pattern, Retrofit2, couroutines , room, navigation components and more.
- 
+
+<p float = "left">
 <img src = "https://user-images.githubusercontent.com/87112510/163689862-ef6c3c94-bb4c-49a6-bc5c-1362184289fa.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163689627-cca4ef79-20b1-4823-b4b5-7bc6faa775b0.png" width = "35%">
-<img src = "https://user-images.githubusercontent.com/87112510/163689596-1c1bf0ca-6704-4113-98c8-c0914816c305.png" width = "35%">
+<img src = "https://user-images.githubusercontent.com/87112510/163718193-714e851a-037e-420d-9cee-feb1bdecd26d.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163689586-f35a8b03-ee1e-4893-97c5-425cc9824ad5.png" width = "35%">
+<img src = "https://user-images.githubusercontent.com/87112510/163718208-1b974f8a-d730-482a-945d-49e2e347504c.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163689614-8544d18c-61aa-4042-a28a-1a77f95465d8.png" width = "35%">
+<img src = "https://user-images.githubusercontent.com/87112510/163718203-980e748f-94d0-4619-aa60-988b80fb1b5c.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163688221-6b117957-ba8e-4f9e-b5fd-6d4a48f513ad.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163688323-ed9b9fa3-b9cb-4cd3-8d78-d09dbd3c2c29.png" width = "35%">
+ <img src = "https://user-images.githubusercontent.com/87112510/163719057-26620056-0bb1-45eb-a567-730928acdfe7.png" width = "35%">
 <img src = "https://user-images.githubusercontent.com/87112510/163688454-a306ac3f-b704-473d-a58b-08a99a3b86e8.png" width = "35%">
-<img src = "https://user-images.githubusercontent.com/87112510/163688488-bd09b56c-e6c2-44ad-9f17-ef49227f1d71.png" width = "35%">
+<img src = "https://user-images.githubusercontent.com/87112510/163718571-ccf55503-2107-4fd9-8dd6-92014c7b0e09.png" width = "35%">
+<p/>
 
 # Architecture
 The architecture of this application relies and complies with the following points below:
@@ -22,6 +27,8 @@ The architecture of this application relies and complies with the following poin
 
 # Technologies used
 - __Kotlin & Java-__ As a programming language.
+- __Firebase Authentification-__ To sign in user .
+- __Cloud Firestore-__ To store user informations and orders.
 - __Coroutines-__ For multithreading while handling requests to the server and local database.
 - __Retrofit-__ A type-safe HTTP client for Android and Java.
 - __LiveData-__ notifies views of any database changes in an observer way.
@@ -31,6 +38,8 @@ The architecture of this application relies and complies with the following poin
 - __View Binding-__ to declaratively bind UI components in layouts to data sources.
 - __Material Design-__ an adaptable system of guidelines, components, and tools that support the best practices of user interface design. 
 
+# Used API 
+It's a custom API designed using <a href="https://designer.mocky.io" > Mocky .
 # How to install the project
 Download the apk from release.
 
