@@ -26,6 +26,7 @@ Group chats including sharing of Media(docs,images & contacts)
 
 
 # Tech stack and 3rd library
+
 - MVVM 
 - Firebase cloud messaging 
 - Firebase google auth 
